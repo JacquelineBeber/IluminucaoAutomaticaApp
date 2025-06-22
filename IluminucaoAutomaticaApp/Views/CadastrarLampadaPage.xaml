@@ -1,0 +1,83 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:componentes="clr-namespace:IluminucaoAutomaticaApp.Views.Componentes"
+             x:Class="IluminucaoAutomaticaApp.Views.CadastrarLampadaPage"
+             BackgroundColor="#1e1e1e"
+             NavigationPage.HasNavigationBar="False">
+
+    <VerticalStackLayout Spacing="15">
+
+        <componentes:CabecalhoView />
+        <Label Text="Cadastrar Lâmpada"
+               FontSize="25"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               TextColor="White"
+               Margin="0,20,0,0"/>
+
+        <Label Text="Ao cadastrar uma nova lâmpada ela será definida como Lâmpada Ativa."
+               FontSize="17"
+               HorizontalOptions="Center"
+               TextColor="White"
+               HorizontalTextAlignment="Center"
+               Margin="20,10,20,20"/>
+
+        <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center" Padding="0,5">
+            <Label Text="Nome:" TextColor="White" FontSize="17" VerticalTextAlignment="Center"/>
+            <Frame Padding="0" HasShadow="False" BorderColor="Transparent"
+                   BackgroundColor="#d3d3d3"
+                   CornerRadius="10"
+                   HeightRequest="40"
+                   HorizontalOptions="Fill">
+                <Entry x:Name="NomeEntry"
+                   TextColor="Black"
+                   BackgroundColor="#d3d3d3"
+                   HeightRequest="40"
+                   WidthRequest="150"
+                   HorizontalOptions="Fill"/>
+            </Frame>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center" Padding="0,5">
+            <Label Text="Potência:" TextColor="White" FontSize="17" VerticalTextAlignment="Center"/>
+            <HorizontalStackLayout Spacing="5">
+                <Frame Padding="0" HasShadow="False" BorderColor="Transparent"
+                   BackgroundColor="#d3d3d3"
+                   CornerRadius="10"
+                   HeightRequest="40"
+                   HorizontalOptions="Fill">
+                    <Entry x:Name="PotenciaEntry"
+                           Keyboard="Numeric"
+                           TextColor="Black"
+                           BackgroundColor="#d3d3d3"
+                           WidthRequest="50"
+                           HeightRequest="40"
+                           HorizontalOptions="Center"/>
+                </Frame>
+                <Label Text="W" TextColor="White" VerticalTextAlignment="Center"/>
+            </HorizontalStackLayout>
+        </HorizontalStackLayout>
+
+        <Button Text="Cadastrar"
+                Clicked="OnCadastrarClicked"
+                BackgroundColor="Green"
+                TextColor="White"
+                WidthRequest="200"
+                CornerRadius="40"
+                FontSize="18"
+                Margin="0,20,0,0"/>
+
+        <!-- Mensagens -->
+        <Label x:Name="MensagemSucesso"
+               Text="Lâmpada cadastrada com sucesso!"
+               TextColor="LimeGreen"
+               IsVisible="False"
+               HorizontalOptions="Center"/>
+        <Label x:Name="MensagemErro"
+               Text="Não foi possível cadastrar a lâmpada, tente mais tarde!"
+               TextColor="Red"
+               IsVisible="False"
+               HorizontalOptions="Center"/>
+
+    </VerticalStackLayout>
+</ContentPage>

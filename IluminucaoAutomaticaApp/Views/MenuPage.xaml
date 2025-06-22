@@ -1,0 +1,52 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:componentes="clr-namespace:IluminucaoAutomaticaApp.Views.Componentes"
+             x:Class="IluminucaoAutomaticaApp.Views.MenuPage"
+             BackgroundColor="#1e1e1e">
+
+    <VerticalStackLayout Spacing="10">
+
+        <Grid BackgroundColor="#abd9f4"
+              Padding="10"
+              HeightRequest="60"
+              VerticalOptions="Start">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="X"
+                FontSize="24"
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                Clicked="OnFecharMenu"
+                Padding="0"
+                WidthRequest="40"
+                HeightRequest="40"
+                VerticalOptions="Center"
+                AbsoluteLayout.LayoutBounds="10,0.5,40,40"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                />
+
+            <Button Grid.Column="1"
+                   Text="Sistema de Iluminação Automática"
+                   BackgroundColor="Transparent"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   Clicked="OnTituloClicked"
+                   FontSize="18"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   AbsoluteLayout.LayoutBounds="0.5,0.5,1,40"
+                   AbsoluteLayout.LayoutFlags="All"/>
+        </Grid>
+
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Button FontSize="17" CornerRadius="40" Text="Cadastrar Lâmpada" Clicked="OnCadastrarLampadaClicked" />
+            <Button FontSize="17" CornerRadius="40" Text="Histórico Lâmpada Ativa" Clicked="OnHistoricoClicked" />
+            <Button FontSize="17" CornerRadius="40" Text="Consumo Lâmpada Ativa" Clicked="OnConsumoClicked" />
+            <Button FontSize="17" CornerRadius="40" Text="Criar Agendamento" Clicked="OnAgendamentoClicked" />
+        </VerticalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

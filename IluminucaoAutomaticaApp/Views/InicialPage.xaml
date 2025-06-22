@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:componentes="clr-namespace:IluminucaoAutomaticaApp.Views.Componentes"
+             x:Class="IluminucaoAutomaticaApp.Views.InicialPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#1c1c1c">
+
+    <VerticalStackLayout 
+        Spacing="10"
+        >
+
+        <!-- Cabeçalho -->
+        <componentes:CabecalhoView />
+
+        <!-- Lâmpada Principal -->
+        <Frame Margin="40,5"
+               Padding="15"
+               BackgroundColor="#f5b4b4"
+               CornerRadius="10"
+               BorderColor="DarkRed"
+               MinimumHeightRequest="200">
+
+            <VerticalStackLayout Spacing="10" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Lâmpada 1"
+                           FontAttributes="Bold"
+                           FontSize="17"
+                           TextColor="Black"/>
+
+                    <Label Text="Ativa"
+                           Grid.Column="1"
+                           TextColor="Green"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           VerticalOptions="Center"/>
+                </Grid>
+
+                <Label Text="Estado: Desligada"
+                       FontSize="16"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       Padding="0, 20"/>
+
+                <Grid ColumnSpacing="20" HorizontalOptions="Center" Padding="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Text="Ligar"
+                            Grid.Column="0"
+                            BackgroundColor="LightGreen"
+                            Clicked="OnLigarClicked"
+                            TextColor="DarkGreen"
+                            WidthRequest="90"
+                            CornerRadius="40"/>
+
+                    <Button Text="Desligar"
+                            Grid.Column="1"
+                            Clicked="OnDesligarClicked"
+                            BackgroundColor="LightCoral"
+                            TextColor="DarkRed"
+                            WidthRequest="90"
+                            CornerRadius="40"/>
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Outras Lâmpadas -->
+        <Grid Padding="10"
+              ColumnSpacing="10"
+              RowSpacing="10"
+              Margin="30,0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Repetir para cada lâmpada (temporário, estático) -->
+            <Frame BackgroundColor="#2c2c2c"
+                   CornerRadius="10"
+                   BorderColor="Gray"
+                   
+                   Grid.Column="0">
+                <VerticalStackLayout Padding="10"
+                                     >
+                    <Label Text="Lâmpada 2"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold" />
+                    <Label Text="Inativa"
+                           HorizontalOptions="Center"
+                           TextColor="Red"/>
+                    <Grid ColumnSpacing="10">
+                        <Switch />
+                        <ImageButton Source="trash.png"
+                                     BackgroundColor="Transparent"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="#2c2c2c"
+                   CornerRadius="10"
+                   BorderColor="Gray"
+                   Grid.Column="1">
+                <VerticalStackLayout Padding="10">
+                    <Label Text="Lâmpada 3"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold" />
+                    <Label Text="Inativa"
+                           HorizontalOptions="Center"
+                           TextColor="Red"/>
+                    <Grid ColumnSpacing="10">
+                        <Switch />
+                        <ImageButton Source="trash.png"
+                                     BackgroundColor="Transparent"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Adicione as outras lâmpadas abaixo em linhas diferentes -->
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
