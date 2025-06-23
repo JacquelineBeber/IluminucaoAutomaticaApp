@@ -20,7 +20,6 @@ namespace IluminucaoAutomaticaApp.Services
                 BaseAddress = new Uri("https://uklj62bzxe.execute-api.sa-east-1.amazonaws.com/Desenvolvimento/lampada/")
             };
         }
-
         public async Task<List<Lampada>> BuscarLampadasAsync()
         {
             try
@@ -40,7 +39,6 @@ namespace IluminucaoAutomaticaApp.Services
                 return new List<Lampada>();
             }
         }
-
         public async Task<bool> LigarLampadaAsync()
         {
             try
@@ -53,7 +51,6 @@ namespace IluminucaoAutomaticaApp.Services
                 return false;
             }
         }
-
         public async Task<bool> DesligarLampadaAsync()
         {
             try
@@ -67,7 +64,6 @@ namespace IluminucaoAutomaticaApp.Services
             }
 
         }
-
         public async Task<bool> ExcluirLampadaAsync(string id)
         {
             try
@@ -80,7 +76,6 @@ namespace IluminucaoAutomaticaApp.Services
                 return false;
             }
         }
-
         public async Task<bool> AtivarLampadaAsync(string id)
         {
             try
@@ -89,6 +84,25 @@ namespace IluminucaoAutomaticaApp.Services
                 return response.IsSuccessStatusCode;
             }
             catch
+            {
+                return false;
+            }
+        }
+        public async Task<bool> CadastrarLampadaAsync(string nome, decimal potencia)
+        {
+            try
+            {
+                var dados = new
+                {
+                    nome = nome,
+                    potencia = potencia
+                };
+
+                var response = await _httpClient.PostAsJsonAsync("cadastrar", dados);
+
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception)
             {
                 return false;
             }

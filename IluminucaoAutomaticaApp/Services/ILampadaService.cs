@@ -14,5 +14,6 @@ namespace IluminucaoAutomaticaApp.Services
         Task<bool> DesligarLampadaAsync();
         Task<bool> ExcluirLampadaAsync(string id);
         Task<bool> AtivarLampadaAsync(string id);
+        Task<bool> CadastrarLampadaAsync(string nome, decimal potencia);
     }
 }

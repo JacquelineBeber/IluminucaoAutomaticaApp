@@ -1,3 +1,5 @@
+using IluminucaoAutomaticaApp.Services;
+
 namespace IluminucaoAutomaticaApp.Views;
 
 public partial class CadastrarLampadaPage : ContentPage
@@ -8,7 +10,9 @@ public partial class CadastrarLampadaPage : ContentPage
         NavigationPage.SetHasNavigationBar(this, false);
     }
 
-    private void OnCadastrarClicked(object sender, EventArgs e)
+    private readonly ILampadaService _lampadaService = new LampadaService();
+    
+    private async void OnCadastrarClicked(object sender, EventArgs e)
     {
         MensagemSucesso.IsVisible = false;
         MensagemErro.IsVisible = false;
@@ -22,7 +26,7 @@ public partial class CadastrarLampadaPage : ContentPage
             return;
         }
 
-        if (!double.TryParse(potenciaStr, out double potencia) || potencia <= 0)
+        if (!decimal.TryParse(potenciaStr, out decimal potencia) || potencia <= 0)
         {
             MensagemErro.IsVisible = true;
             return;
@@ -30,11 +34,20 @@ public partial class CadastrarLampadaPage : ContentPage
 
         try
         {
-            // await LampadaService.CadastrarAsync(nome, potencia);
-            MensagemErro.IsVisible = false;
-            MensagemSucesso.IsVisible = true;
-            NomeEntry.Text = string.Empty;
-            PotenciaEntry.Text = string.Empty;
+            var sucesso = await _lampadaService.CadastrarLampadaAsync(nome, potencia);
+            if (sucesso)
+            {
+                MensagemErro.IsVisible = false;
+                MensagemSucesso.IsVisible = true;
+                NomeEntry.Text = string.Empty;
+                PotenciaEntry.Text = string.Empty;
+            }
+            else
+            {
+                MensagemSucesso.IsVisible = false;
+                MensagemErro.Text = "Não foi possível cadastrar. Tente novamente.";
+                MensagemErro.IsVisible = true;
+            }
         }
         catch
         {
