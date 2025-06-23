@@ -64,12 +64,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\" />
-	  <Folder Include="Services\" />
-	  <Folder Include="ViewModels\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Compile Update="Views\AppFlyout.xaml.cs">
 	    <DependentUpon>AppFlyout.xaml</DependentUpon>
 	  </Compile>

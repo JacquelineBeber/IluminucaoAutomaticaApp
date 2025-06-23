@@ -1,4 +1,6 @@
-﻿namespace IluminucaoAutomaticaApp.Views 
+﻿using IluminucaoAutomaticaApp.ViewModels;
+
+namespace IluminucaoAutomaticaApp.Views 
 {
     public partial class InicialPage : ContentPage
     {
@@ -6,6 +8,7 @@
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            BindingContext = new InicialPageViewModel();
         }
 
         private void OnLigarClicked(object sender, EventArgs e)
