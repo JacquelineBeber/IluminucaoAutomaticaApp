@@ -28,7 +28,7 @@ namespace IluminucaoAutomaticaApp.Services
                 Console.WriteLine($"Response status code: {response.StatusCode}");
                 return response.IsSuccessStatusCode;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return false;
             }

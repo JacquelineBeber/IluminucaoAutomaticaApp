@@ -1,3 +1,5 @@
+using IluminucaoAutomaticaApp.ViewModels;
+
 namespace IluminucaoAutomaticaApp.Views;
 
 public partial class HistoricoPage : ContentPage
@@ -6,5 +8,6 @@ public partial class HistoricoPage : ContentPage
 	{
 		InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
+        BindingContext = new HistoricoPageViewModel();
     }
 }

@@ -17,7 +17,7 @@ namespace IluminucaoAutomaticaApp.Views
             var switchControl = sender as Switch;
             var lampada = switchControl?.BindingContext as Lampada;
 
-            if (e.Value) // Se foi ligado
+            if (e.Value)
             {
                 var vm = BindingContext as InicialPageViewModel;
                 if (vm != null)
