@@ -1,4 +1,5 @@
 using IluminucaoAutomaticaApp.Services;
+using IluminucaoAutomaticaApp.ViewModels;
 
 namespace IluminucaoAutomaticaApp.Views;
 
@@ -8,9 +9,8 @@ public partial class CadastrarLampadaPage : ContentPage
 	{
 		InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
+        BindingContext = new CadastrarLampadaPageViewModel();
     }
-
-    private readonly ILampadaService _lampadaService = new LampadaService();
     
     private async void OnCadastrarClicked(object sender, EventArgs e)
     {
@@ -34,7 +34,9 @@ public partial class CadastrarLampadaPage : ContentPage
 
         try
         {
-            var sucesso = await _lampadaService.CadastrarLampadaAsync(nome, potencia);
+            var vm = BindingContext as CadastrarLampadaPageViewModel;
+            var sucesso = await vm.CadastrarLampada(nome, potencia);
+            
             if (sucesso)
             {
                 MensagemErro.IsVisible = false;

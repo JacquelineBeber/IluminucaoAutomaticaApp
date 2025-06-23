@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:componentes="clr-namespace:IluminucaoAutomaticaApp.Views.Componentes"
              x:Class="IluminucaoAutomaticaApp.Views.AgendamentoPage"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              BackgroundColor="#1e1e1e"
              NavigationPage.HasNavigationBar="False">
 
@@ -20,64 +21,51 @@
             <Frame Padding="0" HasShadow="False" BorderColor="Transparent"
                    BackgroundColor="#d3d3d3"
                    CornerRadius="10"
-                   HeightRequest="40"
+                   HeightRequest="50"
                    HorizontalOptions="Fill">
                 <Entry x:Name="NomeAgendamentoEntry"
                    TextColor="Black"
                    BackgroundColor="#d3d3d3"
                    HeightRequest="40"
-                   WidthRequest="200"
+                   WidthRequest="150"
                    HorizontalOptions="Fill"/>
             </Frame>
         </HorizontalStackLayout>
 
-        <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center" Padding="0,5">
-            <Label Text="Data:" TextColor="White" FontSize="17" VerticalTextAlignment="Center"/>    
-            <Frame Padding="0" HasShadow="False" BorderColor="Transparent"
-                    BackgroundColor="#d3d3d3"
-                    CornerRadius="10"
-                    HeightRequest="40"
-                    HorizontalOptions="Fill">
-                    <Entry x:Name="DataEntry"
+        <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Data:" TextColor="White" FontSize="17" VerticalTextAlignment="Center"/>
+            <Frame BorderColor="Transparent" BackgroundColor="#d3d3d3" CornerRadius="10" Padding="0,5">
+                <DatePicker x:Name="DataAgendamentoPicker"
+                            TextColor="Black"
+                            Format="dd/MM/yyyy"
+                            BackgroundColor="#d3d3d3"
+                            HorizontalOptions="Center"
+                            FontSize="17"
+                            MinimumDate="{x:Static sys:DateTime.Today}"/>
+            </Frame>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Hora:" TextColor="White" FontSize="17" VerticalTextAlignment="Center"/>
+            <Frame BorderColor="Transparent" BackgroundColor="#d3d3d3" CornerRadius="10" Padding="0,5">
+                <TimePicker x:Name="HoraAgendamentoPicker"
                             TextColor="Black"
                             BackgroundColor="#d3d3d3"
-                            WidthRequest="200"
-                            HeightRequest="40"
-                            HorizontalOptions="Center"/>
-                </Frame>
+                            HorizontalOptions="Center"
+                            FontSize="17"/>
+            </Frame>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center" Padding="0,5">
-            <Label Text="Hora:" TextColor="White" FontSize="17" VerticalTextAlignment="Center"/>
-            <Frame Padding="0" HasShadow="False" BorderColor="Transparent"
-                    BackgroundColor="#d3d3d3"
-                    CornerRadius="10"
-                    HeightRequest="40"
-                    HorizontalOptions="Fill">
-                <Entry x:Name="HoraEntry"
-                        TextColor="Black"
-                        BackgroundColor="#d3d3d3"
-                        WidthRequest="200"
-                        HeightRequest="40"
-                        HorizontalOptions="Center"/>
-                </Frame>
-            </HorizontalStackLayout>
-
-        <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center" Padding="0,5">
             <Label Text="Ação:" TextColor="White" FontSize="17" VerticalTextAlignment="Center"/>
-            <Frame Padding="0" HasShadow="False" BorderColor="Transparent"
-                    BackgroundColor="#d3d3d3"
-                    CornerRadius="10"
-                    HeightRequest="40"
-                    WidthRequest="200"
-                    HorizontalOptions="Center">
+            <Frame BorderColor="Transparent" BackgroundColor="#d3d3d3" CornerRadius="10" Padding="0,5">
                 <Picker x:Name="AcaoPicker"
-                    Title="Selecione uma ação"
-                    BackgroundColor="#d3d3d3"
-                    TitleColor="Gray"
-                    TextColor="Black"
-                    HorizontalOptions="Center"
-                    >
+                        Title=" Selecione  "
+                        BackgroundColor="#d3d3d3"
+                        TitleColor="Gray"
+                        TextColor="Black"
+                        HorizontalOptions="Center"
+                        FontSize="17">
                     <Picker.Items HorizontalOptions="Center">
                         <x:String>Ligar</x:String>
                         <x:String>Desligar</x:String>
@@ -90,21 +78,21 @@
                 BackgroundColor="Green"
                 TextColor="White"
                 WidthRequest="200"
+                Clicked="OnCadastrarAgendamentoClicked"
                 CornerRadius="40"
                 FontSize="18"
                 Margin="0,20,0,0"/>
 
         <!-- Mensagens -->
         <Label x:Name="MensagemSucesso"
-               Text="Lâmpada cadastrada com sucesso!"
+               Text="Agendamento criado com sucesso!"
                TextColor="LimeGreen"
                IsVisible="False"
                HorizontalOptions="Center"/>
         <Label x:Name="MensagemErro"
-               Text="Não foi possível cadastrar a lâmpada, tente mais tarde!"
+               Text="Não foi possível criar o agendamento, tente mais tarde!"
                TextColor="Red"
                IsVisible="False"
                HorizontalOptions="Center"/>
-
     </VerticalStackLayout>
 </ContentPage>

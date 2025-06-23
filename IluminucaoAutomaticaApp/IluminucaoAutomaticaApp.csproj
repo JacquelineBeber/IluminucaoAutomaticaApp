@@ -64,7 +64,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\AppFlyout.xaml.cs">
+	  <Compile Update="AppFlyout.xaml.cs">
 	    <DependentUpon>AppFlyout.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\InicialPage.xaml.cs">

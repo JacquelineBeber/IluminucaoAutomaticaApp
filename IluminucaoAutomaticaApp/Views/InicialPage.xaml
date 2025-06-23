@@ -78,8 +78,11 @@
             <!-- Outras Lâmpadas -->
             <CollectionView ItemsSource="{Binding OutrasLampadas}"
                             Margin="30,0"
-                            ItemsLayout="Grid, 2"
                             HorizontalOptions="Fill">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -101,17 +104,24 @@
                                        FontSize="18"                          
                                        TextColor="Red" />
 
-                                <Grid>                                    
-                                    <Button Text="Excluir"
+                                <Grid ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Switch Grid.Column="0"
+                                            IsToggled="{Binding Estado, Mode=TwoWay}"
+                                            Toggled="OnLampadaToggled"/>
+                                    <Button Grid.Column="1"
+                                            Text="Excluir"
                                             BackgroundColor="#1c1c1c"
                                             TextColor="White"
                                             WidthRequest="80"
                                             HeightRequest="40"
                                             CornerRadius="40"
-                                            HorizontalOptions="End"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:InicialPageViewModel}}, Path=ExcluirCommand}"
                                             CommandParameter="{Binding .}"/>
-                                    <Switch IsToggled="{Binding Estado, Mode=TwoWay}" Toggled="OnLampadaToggled" HorizontalOptions="Center"/>
                                 </Grid>
                             </VerticalStackLayout>
                         </Frame>
