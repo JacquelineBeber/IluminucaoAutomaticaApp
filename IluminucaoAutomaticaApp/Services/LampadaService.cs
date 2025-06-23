@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IluminucaoAutomaticaApp.Services
 {
-    class LampadaService: ILampadaService
+    class LampadaService : ILampadaService
     {
         private readonly HttpClient _httpClient;
 
@@ -17,7 +17,7 @@ namespace IluminucaoAutomaticaApp.Services
         {
             _httpClient = new HttpClient
             {
-                BaseAddress = new Uri("https://uklj62bzxe.execute-api.sa-east-1.amazonaws.com/Desenvolvimento/")
+                BaseAddress = new Uri("https://uklj62bzxe.execute-api.sa-east-1.amazonaws.com/Desenvolvimento/lampada/")
             };
         }
 
@@ -25,9 +25,7 @@ namespace IluminucaoAutomaticaApp.Services
         {
             try
             {
-                //var lampadas = await _httpClient.GetFromJsonAsync<List<Lampada>>("lampada/listar_lampadas");
-                //return lampadas ?? new List<Lampada>();
-                var response = await _httpClient.GetAsync("lampada/listar_lampadas");
+                var response = await _httpClient.GetAsync("listar_lampadas");
                 var json = await response.Content.ReadAsStringAsync();
 
                 var doc = JsonDocument.Parse(json);
@@ -42,5 +40,59 @@ namespace IluminucaoAutomaticaApp.Services
                 return new List<Lampada>();
             }
         }
+
+        public async Task<bool> LigarLampadaAsync()
+        {
+            try
+            {
+                var response = await _httpClient.PostAsync("ligar/app", null);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DesligarLampadaAsync()
+        {
+            try
+            {
+                var response = await _httpClient.PostAsync("desligar/app", null);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+        public async Task<bool> ExcluirLampadaAsync(string id)
+        {
+            try
+            {
+                var response = await _httpClient.DeleteAsync($"remover/{id}");
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> AtivarLampadaAsync(string id)
+        {
+            try
+            {
+                var response = await _httpClient.PostAsync($"definir_lampada_ativa/{id}", null);
+                return response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

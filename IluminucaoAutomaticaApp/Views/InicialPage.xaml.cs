@@ -1,4 +1,5 @@
-﻿using IluminucaoAutomaticaApp.ViewModels;
+﻿using IluminucaoAutomaticaApp.Models;
+using IluminucaoAutomaticaApp.ViewModels;
 
 namespace IluminucaoAutomaticaApp.Views 
 {
@@ -11,16 +12,17 @@ namespace IluminucaoAutomaticaApp.Views
             BindingContext = new InicialPageViewModel();
         }
 
-        private void OnLigarClicked(object sender, EventArgs e)
+        private async void OnLampadaToggled(object sender, ToggledEventArgs e)
         {
-            // Implementar a lógica para ligar a lâmpada
-            DisplayAlert("Ação", "Lâmpada ligada!", "OK");
-        }
+            var switchControl = sender as Switch;
+            var lampada = switchControl?.BindingContext as Lampada;
 
-        private void OnDesligarClicked(object sender, EventArgs e)
-        {
-            // Implementar a lógica para desligar a lâmpada
-            DisplayAlert("Ação", "Lâmpada desligada!", "OK");
+            if (e.Value) // Se foi ligado
+            {
+                var vm = BindingContext as InicialPageViewModel;
+                if (vm != null)
+                    await vm.AtivarLampadaAsync(lampada);
+            }
         }
     }
 }
