@@ -42,24 +42,24 @@
                             <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
                                 <Label Text="{Binding Acionamento, StringFormat='Acionamento: {0}'}"
                                        TextColor="White"
-                                       FontSize="18"
+                                       FontSize="19"
                                        HorizontalOptions="Center"
                                        FontAttributes="Bold"/>
                                 <Label Text="{Binding Desligamento, StringFormat='Desligamento: {0}'}"
                                        TextColor="White"
                                        HorizontalOptions="Center"
-                                       FontSize="18"
+                                       FontSize="19"
                                        FontAttributes="Bold"/>
                                 <Label Text="Energia Consumida:"
                                        TextColor="White"
                                        HorizontalOptions="Center"
                                        Padding="0,10,0,0"
-                                       FontSize="19"
+                                       FontSize="20"
                                        FontAttributes="Bold"/>
                                 <Label Text="{Binding EnergiaConsumida, StringFormat='{0:F7} WKh'}"
                                        TextColor="White"
                                        HorizontalOptions="Center"
-                                       FontSize="19"
+                                       FontSize="20"
                                        FontAttributes="Bold"
                                        Padding="0,0,0,10"/>
                             </VerticalStackLayout>

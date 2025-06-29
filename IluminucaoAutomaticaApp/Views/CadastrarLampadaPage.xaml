@@ -75,27 +75,14 @@
                    Text="Lâmpada cadastrada com sucesso!"
                    TextColor="LimeGreen"
                    IsVisible="False"
+                   HorizontalOptions="Center"/>
+            <Label x:Name="MensagemErro"
+                   Text="Não foi possível cadastrar a lâmpada!"
+                   TextColor="Red"
+                   IsVisible="False"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"/>
 
-            <Label x:Name="MensagemErroObrigatorio"
-                   Text="Preencha os campos obrigatórios!"
-                   TextColor="Red"
-                   IsVisible="False"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
-            <Label x:Name="MensagemErroPotencia"
-                   Text="O campo Potência deve ser um número maior que 0!"
-                   TextColor="Red"
-                   IsVisible="False"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
-            <Label x:Name="MensagemErroCadastro"
-                   Text="Erro ao cadastrar a lâmpada!"
-                   TextColor="Red"
-                   IsVisible="False"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
