@@ -92,12 +92,19 @@
                    IsVisible="False"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"/>
-            <Label x:Name="MensagemErro"
-                   Text="Não foi possível criar o agendamento!"
+            
+            <Label x:Name="MensagemErroObrigatorio"
+                   Text="Preencha os campos obrigatórios!"
                    TextColor="Red"
                    IsVisible="False"
                    FontAttributes="Bold"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center" />
+            <Label x:Name="MensagemErroCadastro"
+                   Text="Erro ao criar o agendamento!"
+                   TextColor="Red"
+                   IsVisible="False"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

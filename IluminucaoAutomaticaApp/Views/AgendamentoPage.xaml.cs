@@ -15,7 +15,8 @@ public partial class AgendamentoPage : ContentPage
     private async void OnCadastrarAgendamentoClicked(object sender, EventArgs e)
     {
         MensagemSucesso.IsVisible = false;
-        MensagemErro.IsVisible = false;
+        MensagemErroObrigatorio.IsVisible = false;
+        MensagemErroCadastro.IsVisible = false;
 
         var nome = NomeAgendamentoEntry.Text?.Trim();
         var data = DataAgendamentoPicker.Date;
@@ -24,7 +25,9 @@ public partial class AgendamentoPage : ContentPage
 
         if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(acao))
         {
-            MensagemErro.IsVisible = true;
+            MensagemErroObrigatorio.IsVisible = true;
+            MensagemErroCadastro.IsVisible = false;
+            MensagemSucesso.IsVisible = false;
             return;
         }
 
@@ -41,7 +44,8 @@ public partial class AgendamentoPage : ContentPage
 
         if (sucesso)
         {
-            MensagemErro.IsVisible = false;
+            MensagemErroObrigatorio.IsVisible = false;
+            MensagemErroCadastro.IsVisible = false;
             MensagemSucesso.IsVisible = true;
             NomeAgendamentoEntry.Text = string.Empty;
             AcaoPicker.SelectedIndex = -1;
@@ -49,7 +53,8 @@ public partial class AgendamentoPage : ContentPage
         else
         {
             MensagemSucesso.IsVisible = false;
-            MensagemErro.IsVisible = true;
+            MensagemErroObrigatorio.IsVisible = false;
+            MensagemErroCadastro.IsVisible = true;
         }
     }
 }

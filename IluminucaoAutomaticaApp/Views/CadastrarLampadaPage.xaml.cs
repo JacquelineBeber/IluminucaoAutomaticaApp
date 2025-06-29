@@ -15,20 +15,29 @@ public partial class CadastrarLampadaPage : ContentPage
     private async void OnCadastrarClicked(object sender, EventArgs e)
     {
         MensagemSucesso.IsVisible = false;
-        MensagemErro.IsVisible = false;
+        MensagemErroObrigatorio.IsVisible = false;
+        MensagemErroCadastro.IsVisible = false;
+        MensagemErroPotencia.IsVisible = false;
 
         var nome = NomeEntry.Text?.Trim();
         var potenciaStr = PotenciaEntry.Text?.Trim();
 
         if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(potenciaStr))
         {
-            MensagemErro.IsVisible = true;
+            MensagemErroObrigatorio.IsVisible = true;
+            MensagemErroCadastro.IsVisible = false;
+            MensagemSucesso.IsVisible = false;
+            MensagemErroPotencia.IsVisible = false;
             return;
         }
 
         if (!decimal.TryParse(potenciaStr, out decimal potencia) || potencia <= 0)
         {
-            MensagemErro.IsVisible = true;
+            MensagemErroCadastro.IsVisible = false;
+            MensagemErroObrigatorio.IsVisible = false;
+            MensagemSucesso.IsVisible = false;
+            
+            MensagemErroPotencia.IsVisible = true;
             return;
         }
 
@@ -39,7 +48,10 @@ public partial class CadastrarLampadaPage : ContentPage
             
             if (sucesso)
             {
-                MensagemErro.IsVisible = false;
+                MensagemErroCadastro.IsVisible = false;
+                MensagemErroObrigatorio.IsVisible = false;
+                MensagemErroPotencia.IsVisible = false;
+
                 MensagemSucesso.IsVisible = true;
                 NomeEntry.Text = string.Empty;
                 PotenciaEntry.Text = string.Empty;
@@ -47,14 +59,20 @@ public partial class CadastrarLampadaPage : ContentPage
             else
             {
                 MensagemSucesso.IsVisible = false;
-                MensagemErro.Text = "Não foi possível cadastrar. Tente novamente.";
-                MensagemErro.IsVisible = true;
+                MensagemErroObrigatorio.IsVisible = false;
+                MensagemErroPotencia.IsVisible = false;
+
+                MensagemErroCadastro.IsVisible = true;
             }
         }
         catch
         {
             MensagemSucesso.IsVisible = false;
-            MensagemErro.IsVisible = true;
+            MensagemSucesso.IsVisible = false;
+            MensagemErroObrigatorio.IsVisible = false;
+            MensagemErroPotencia.IsVisible = false;
+
+            MensagemErroCadastro.IsVisible = true;
         }
     }
 }
