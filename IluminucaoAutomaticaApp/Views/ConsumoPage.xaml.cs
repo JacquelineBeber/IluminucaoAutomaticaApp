@@ -1,3 +1,5 @@
+using IluminucaoAutomaticaApp.ViewModels;
+
 namespace IluminucaoAutomaticaApp.Views;
 
 public partial class ConsumoPage : ContentPage
@@ -6,5 +8,6 @@ public partial class ConsumoPage : ContentPage
 	{
 		InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
+        BindingContext = new ConsumoPageViewModel();
     }
 }
