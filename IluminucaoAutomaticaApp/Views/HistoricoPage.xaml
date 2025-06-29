@@ -10,45 +10,46 @@
         <viewmodels:HistoricoPageViewModel />
     </ContentPage.BindingContext>
 
-    <ScrollView>
-        <VerticalStackLayout Spacing="15">
-            <componentes:CabecalhoView />
+    <Grid RowDefinitions="Auto,*">
+        <componentes:CabecalhoView Grid.Row="0"/>
 
-            <Label Text="Histórico Lâmpada Ativa"
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="15">
+                <Label Text="Histórico Lâmpada Ativa"
                    FontSize="25"
                    FontAttributes="Bold"
                    TextColor="Black"
                    HorizontalOptions="Center"
                    Margin="0,10"/>
 
-            <CollectionView ItemsSource="{Binding Historico}"
+                <CollectionView ItemsSource="{Binding Historico}"
                             Margin="30,0"
                             HorizontalOptions="Fill">
 
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical"/>
-                </CollectionView.ItemsLayout>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame BackgroundColor="#3a79ff"
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="#3a79ff"
                                BorderColor="DarkSlateGray"
                                CornerRadius="20"
                                Padding="15"
                                Margin="0,10">
 
-                            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                <Label Text="{Binding Acao, StringFormat='Ação: {0}'}"
+                                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                    <Label Text="{Binding Acao, StringFormat='Ação: {0}'}"
                                        TextColor="White"
                                        FontSize="19"
                                        HorizontalOptions="Center"
                                        FontAttributes="Bold"/>
-                                <Label Text="{Binding OrigemAcao, StringFormat='Origem da Ação: {0}'}"
+                                    <Label Text="{Binding OrigemAcao, StringFormat='Origem da Ação: {0}'}"
                                        TextColor="White"
                                        HorizontalOptions="Center"
                                        FontSize="18"
                                        FontAttributes="Bold"/>
-                                <Label Text="{Binding MomentoAcao, StringFormat='Momento da Ação:'}"
+                                    <Label Text="{Binding MomentoAcao, StringFormat='Momento da Ação:'}"
                                        TextColor="White"
                                        HorizontalOptions="Center"
                                        VerticalOptions="Center"
@@ -57,7 +58,7 @@
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"
                                        LineBreakMode="WordWrap"/>
-                                <Label Text="{Binding MomentoAcao, StringFormat='{0}'}"
+                                    <Label Text="{Binding MomentoAcao, StringFormat='{0}'}"
                                        TextColor="White"
                                        HorizontalOptions="Center"
                                        VerticalOptions="Center"
@@ -66,13 +67,13 @@
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"
                                        LineBreakMode="WordWrap"/>
-                            </VerticalStackLayout>
+                                </VerticalStackLayout>
 
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </VerticalStackLayout>
-    </ScrollView>
-
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

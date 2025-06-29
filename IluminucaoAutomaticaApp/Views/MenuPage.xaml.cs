@@ -8,9 +8,10 @@ public partial class MenuPage : ContentPage
         NavigationPage.SetHasNavigationBar(this, false);
     }
 
-    private void OnFecharMenu(object sender, EventArgs e)
+    private async void OnFecharMenu(object sender, EventArgs e)
     {
-        Application.Current.MainPage = new NavigationPage(new InicialPage());
+        await Navigation.PopAsync();
+        //Application.Current.MainPage = new NavigationPage(new InicialPage());
     }
 
     private void OnTituloClicked(object sender, EventArgs e)

@@ -6,96 +6,98 @@
              BackgroundColor="#e7edf8"
              NavigationPage.HasNavigationBar="False">
 
-    <VerticalStackLayout Spacing="15">
+    <Grid RowDefinitions="Auto,*">
+        <componentes:CabecalhoView Grid.Row="0" />
 
-        <componentes:CabecalhoView />
-        <Label Text="Criar Agendamento"
-               FontSize="25"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"
-               TextColor="Black"
-               Margin="0,20,0,0"/>
-
-        <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center" Padding="0,10">
-            <Label Text="Nome:" TextColor="Black" FontSize="17" VerticalTextAlignment="Center"/>
-            <Frame Padding="0" HasShadow="False" BorderColor="Transparent"
-                   BackgroundColor="#e7edf8"
-                   CornerRadius="10"
-                   HeightRequest="50"
-                   HorizontalOptions="Fill">
-                <Entry x:Name="NomeAgendamentoEntry"
+        <VerticalStackLayout Grid.Row="1"  Spacing="15">
+            <Label Text="Criar Agendamento"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
                    TextColor="Black"
-                   BackgroundColor="#e7edf8"
-                   HeightRequest="40"
-                   WidthRequest="150"
-                   HorizontalOptions="Fill"/>
-            </Frame>
-        </HorizontalStackLayout>
+                   Margin="0,20,0,0"/>
 
-        <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
-            <Label Text="Data:" TextColor="Black" FontSize="17" VerticalTextAlignment="Center"/>
-            <Frame BorderColor="Transparent" BackgroundColor="#e7edf8" CornerRadius="10" Padding="0,5">
-                <DatePicker x:Name="DataAgendamentoPicker"
-                            TextColor="Black"
-                            Format="dd/MM/yyyy"
-                            BackgroundColor="#e7edf8"
-                            HorizontalOptions="Center"
-                            FontSize="17"
-                            MinimumDate="{x:Static sys:DateTime.Today}"/>
-            </Frame>
-        </HorizontalStackLayout>
-
-        <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
-            <Label Text="Hora:" TextColor="Black" FontSize="17" VerticalTextAlignment="Center"/>
-            <Frame BorderColor="Transparent" BackgroundColor="#e7edf8" CornerRadius="10" Padding="0,5">
-                <TimePicker x:Name="HoraAgendamentoPicker"
-                            TextColor="Black"
-                            BackgroundColor="#e7edf8"
-                            HorizontalOptions="Center"
-                            FontSize="17"/>
-            </Frame>
-        </HorizontalStackLayout>
-
-        <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center" Padding="0,5">
-            <Label Text="Ação:" TextColor="Black" FontSize="17" VerticalTextAlignment="Center"/>
-            <Frame BorderColor="Transparent" BackgroundColor="#e7edf8" CornerRadius="10" Padding="0,5">
-                <Picker x:Name="AcaoPicker"
-                        Title=" Selecione  "
-                        BackgroundColor="#e7edf8"
-                        TitleColor="Gray"
-                        TextColor="Black"
-                        HorizontalOptions="Center"
-                        FontSize="17">
-                    <Picker.Items HorizontalOptions="Center">
-                        <x:String>Ligar</x:String>
-                        <x:String>Desligar</x:String>
-                    </Picker.Items>
-                </Picker>
-            </Frame>
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center" Padding="0,10">
+                <Label Text="Nome:" TextColor="Black" FontSize="17" VerticalTextAlignment="Center"/>
+                <Frame Padding="0" HasShadow="False" BorderColor="Transparent"
+                       BackgroundColor="#e7edf8"
+                       CornerRadius="10"
+                       HeightRequest="50"
+                       HorizontalOptions="Fill">
+                    <Entry x:Name="NomeAgendamentoEntry"
+                       TextColor="Black"
+                       BackgroundColor="#e7edf8"
+                       HeightRequest="40"
+                       WidthRequest="150"
+                       HorizontalOptions="Fill"/>
+                </Frame>
             </HorizontalStackLayout>
 
-        <Button Text="Cadastrar"
-                BackgroundColor="Green"
-                TextColor="White"
-                WidthRequest="200"
-                Clicked="OnCadastrarAgendamentoClicked"
-                CornerRadius="40"
-                FontSize="18"
-                FontAttributes="Bold"
-                Margin="0,20,0,0"/>
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="Data:" TextColor="Black" FontSize="17" VerticalTextAlignment="Center"/>
+                <Frame BorderColor="Transparent" BackgroundColor="#e7edf8" CornerRadius="10" Padding="0,5">
+                    <DatePicker x:Name="DataAgendamentoPicker"
+                                TextColor="Black"
+                                Format="dd/MM/yyyy"
+                                BackgroundColor="#e7edf8"
+                                HorizontalOptions="Center"
+                                FontSize="17"
+                                MinimumDate="{x:Static sys:DateTime.Today}"/>
+                </Frame>
+            </HorizontalStackLayout>
 
-        <!-- Mensagens -->
-        <Label x:Name="MensagemSucesso"
-               Text="Agendamento criado com sucesso!"
-               TextColor="LimeGreen"
-               IsVisible="False"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"/>
-        <Label x:Name="MensagemErro"
-               Text="Não foi possível criar o agendamento!"
-               TextColor="Red"
-               IsVisible="False"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"/>
-    </VerticalStackLayout>
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="Hora:" TextColor="Black" FontSize="17" VerticalTextAlignment="Center"/>
+                <Frame BorderColor="Transparent" BackgroundColor="#e7edf8" CornerRadius="10" Padding="0,5">
+                    <TimePicker x:Name="HoraAgendamentoPicker"
+                                TextColor="Black"
+                                BackgroundColor="#e7edf8"
+                                HorizontalOptions="Center"
+                                FontSize="17"/>
+                </Frame>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center" Padding="0,5">
+                <Label Text="Ação:" TextColor="Black" FontSize="17" VerticalTextAlignment="Center"/>
+                <Frame BorderColor="Transparent" BackgroundColor="#e7edf8" CornerRadius="10" Padding="0,5">
+                    <Picker x:Name="AcaoPicker"
+                            Title=" Selecione  "
+                            BackgroundColor="#e7edf8"
+                            TitleColor="Gray"
+                            TextColor="Black"
+                            HorizontalOptions="Center"
+                            FontSize="17">
+                        <Picker.Items HorizontalOptions="Center">
+                            <x:String>Ligar</x:String>
+                            <x:String>Desligar</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+                </HorizontalStackLayout>
+
+            <Button Text="Cadastrar"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    WidthRequest="200"
+                    Clicked="OnCadastrarAgendamentoClicked"
+                    CornerRadius="40"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    Margin="0,20,0,0"/>
+
+            <!-- Mensagens -->
+            <Label x:Name="MensagemSucesso"
+                   Text="Agendamento criado com sucesso!"
+                   TextColor="LimeGreen"
+                   IsVisible="False"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+            <Label x:Name="MensagemErro"
+                   Text="Não foi possível criar o agendamento!"
+                   TextColor="Red"
+                   IsVisible="False"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

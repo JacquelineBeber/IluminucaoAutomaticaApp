@@ -10,11 +10,12 @@
         <viewmodels:ConsumoPageViewModel />
     </ContentPage.BindingContext>
 
-    <ScrollView>
-        <VerticalStackLayout Spacing="10">
-            <componentes:CabecalhoView />
+    <Grid RowDefinitions="Auto,*">
+        <componentes:CabecalhoView Grid.Row="0"/>
 
-            <Label Text="Consumo"
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="15">
+                <Label Text="Consumo"
                FontSize="25"
                FontAttributes="Bold"
                TextColor="Black"
@@ -22,7 +23,7 @@
                Margin="0,10,0,0"/>
 
 
-            <CollectionView ItemsSource="{Binding Consumo}"
+                <CollectionView ItemsSource="{Binding Consumo}"
                         Margin="30,0"
                         HorizontalOptions="Fill">
                 
@@ -66,7 +67,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </VerticalStackLayout>
-    </ScrollView>
-
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

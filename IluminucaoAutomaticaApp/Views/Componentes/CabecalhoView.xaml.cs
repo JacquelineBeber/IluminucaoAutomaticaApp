@@ -10,22 +10,13 @@ public partial class CabecalhoView : ContentView
 	{
         InitializeComponent();
     }
-    private void OnMenuClicked(object sender, EventArgs e)
+    private async void OnMenuClicked(object sender, EventArgs e)
     {
-        Application.Current.MainPage = new NavigationPage(new MenuPage());
+        await Navigation.PushAsync(new MenuPage());
+        //Application.Current.MainPage = new NavigationPage(new MenuPage());
     }
     private void OnTituloClicked(object sender, EventArgs e)
     {
-        // Se já estiver na InicialPage, apenas recarrega
-        //if (Application.Current.MainPage is NavigationPage nav &&
-        //    nav.CurrentPage is InicialPage)
-        //{
-        //    await nav.PopToRootAsync();
-        //    nav.CurrentPage.BindingContext = new InicialPage();
-        //}
-        //else
-        //{
-            Application.Current.MainPage = new NavigationPage(new InicialPage());
-        //}
+         Application.Current.MainPage = new NavigationPage(new InicialPage());
     }
 }
