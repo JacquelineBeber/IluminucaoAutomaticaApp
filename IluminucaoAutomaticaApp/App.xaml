@@ -21,6 +21,7 @@
                 <Setter Property="FontFamily" Value="OpenSansRegular"/>
             </Style>
             <converters:BoolToAtivaInativaConverter x:Key="BoolToAtivaInativaConverter" />
+            <converters:EstadoLampadaToColorConverter x:Key="EstadoLampadaToColorConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

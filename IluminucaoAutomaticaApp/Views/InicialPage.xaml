@@ -4,8 +4,8 @@
              xmlns:componentes="clr-namespace:IluminucaoAutomaticaApp.Views.Componentes"
              x:Class="IluminucaoAutomaticaApp.Views.InicialPage"
              xmlns:local="clr-namespace:IluminucaoAutomaticaApp.ViewModels"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#1c1c1c">
+             Background="#e7edf8"
+             NavigationPage.HasNavigationBar="False">
 
     <ScrollView>
         <VerticalStackLayout Spacing="10">
@@ -16,7 +16,7 @@
             <!-- Lâmpada Principal -->
             <Frame Margin="40,5"
                    Padding="15"
-                   BackgroundColor="#f5b4b4"
+                   BackgroundColor="{Binding LampadaPrincipal.Estado, Converter={StaticResource EstadoLampadaToColorConverter}}"
                    CornerRadius="10"
                    BorderColor="DarkRed"
                    MinimumHeightRequest="200">
@@ -86,15 +86,15 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BackgroundColor="#2c2c2c"
+                        <Frame BackgroundColor="#dce4eb"
                                CornerRadius="10"
                                BorderColor="Gray"
                                Padding="10"
                                Margin="5">
 
-                            <VerticalStackLayout Spacing="5" Padding="10">
+                            <VerticalStackLayout Spacing="5" Padding="10" VerticalOptions="Fill">
                                 <Label Text="{Binding Nome}"
-                                       TextColor="White"
+                                       TextColor="Black"
                                        FontSize="18"
                                        HorizontalOptions="Center"
                                        FontAttributes="Bold" />
@@ -104,13 +104,34 @@
                                        FontSize="18"                          
                                        TextColor="Red" />
 
-                                <Grid ColumnSpacing="10">
+                                <Grid ColumnSpacing="10" VerticalOptions="End" Margin="0,10,0,0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Switch Grid.Column="0"
+                                    <Button Grid.Column="0"
+                                            Text="Ativar"
+                                            BackgroundColor="White"
+                                            TextColor="Green"
+                                            WidthRequest="80"
+                                            HeightRequest="40"
+                                            CornerRadius="40"
+                                            Command="{Binding  Source={RelativeSource AncestorType={x:Type local:InicialPageViewModel}}, Path=AtivarCommand}"
+                                            CommandParameter="{Binding .}"/>
+
+                                    <ImageButton Grid.Column="1"
+                                         Source="lixeira.png"
+                                         BackgroundColor="Transparent"
+                                         WidthRequest="40"
+                                         HeightRequest="40"
+                                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:InicialPageViewModel}}, Path=ExcluirCommand}"
+                                         CommandParameter="{Binding .}"
+                                         Padding="0"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="Center"/>
+
+                                    <!--<Switch Grid.Column="0"
                                             IsToggled="{Binding Estado, Mode=TwoWay}"
                                             Toggled="OnLampadaToggled"/>
                                     <Button Grid.Column="1"
@@ -121,7 +142,7 @@
                                             HeightRequest="40"
                                             CornerRadius="40"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:InicialPageViewModel}}, Path=ExcluirCommand}"
-                                            CommandParameter="{Binding .}"/>
+                                            CommandParameter="{Binding .}"/>-->
                                 </Grid>
                             </VerticalStackLayout>
                         </Frame>
