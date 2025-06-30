@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:componentes="clr-namespace:IluminucaoAutomaticaApp.Views.Componentes"
+             xmlns:viewmodels="clr-namespace:IluminucaoAutomaticaApp.ViewModels"
+             x:Class="IluminucaoAutomaticaApp.Views.MonitorarConsumoPage"
+             BackgroundColor="#e7edf8"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MonitorarConsumoPageViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto,*">
+        <componentes:CabecalhoView Grid.Row="0" />
+
+        <ScrollView Grid.Row="1">
+            <Label Text="Monitorar Consumo"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,10,0,0"/>
+            
+
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>
