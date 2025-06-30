@@ -34,7 +34,7 @@ namespace IluminucaoAutomaticaApp.Services
 
                 return historico ?? new List<Historico>();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return new List<Historico>();
             }

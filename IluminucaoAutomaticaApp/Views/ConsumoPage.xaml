@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:componentes="clr-namespace:IluminucaoAutomaticaApp.Views.Componentes"
@@ -16,16 +17,32 @@
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Spacing="15">
                 <Label Text="Consumo"
-               FontSize="25"
-               FontAttributes="Bold"
-               TextColor="Black"
-               HorizontalOptions="Center"
-               Margin="0,10,0,0"/>
+                       FontSize="25"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       HorizontalOptions="Center"
+                       Margin="0,10,0,0"/>
 
+                <ActivityIndicator IsRunning="{Binding Carregando}"
+                                   IsVisible="{Binding Carregando}"
+                                   Color="DarkGray"
+                                   HorizontalOptions="Center"
+                                   Margin="0,10" />
+
+                <Label x:Name="LabelSemConsumo"
+                       Text="A lâmpada ainda não possui nenhum consumo!"
+                       Padding="10"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center"
+                       TextColor="DarkRed"
+                       FontAttributes="Italic"
+                       FontSize="18"
+                       Opacity="0"
+                       IsVisible="False"/>
 
                 <CollectionView ItemsSource="{Binding Consumo}"
-                        Margin="30,0"
-                        HorizontalOptions="Fill">
+                                Margin="30,0"
+                                HorizontalOptions="Fill">
                 
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"/>
@@ -33,13 +50,13 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BackgroundColor="#3a79ff"
-                           BorderColor="DarkGray"
-                           CornerRadius="20"
-                           Padding="15"
-                           Margin="0,10">
+                            <Frame BackgroundColor="#3a79ff"
+                                   BorderColor="DarkGray"
+                                   CornerRadius="20"
+                                   Padding="15"
+                                   Margin="0,10">
 
-                            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
                                 <Label Text="{Binding Acionamento, StringFormat='Acionamento: {0}'}"
                                        TextColor="White"
                                        FontSize="18"

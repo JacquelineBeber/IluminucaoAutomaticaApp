@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:componentes="clr-namespace:IluminucaoAutomaticaApp.Views.Componentes"
@@ -43,9 +44,10 @@
 
         <VerticalStackLayout Padding="20" Spacing="15">
             <Button FontSize="17" CornerRadius="40" Text="Cadastrar Lâmpada" Clicked="OnCadastrarLampadaClicked" />
+            <Button FontSize="17" CornerRadius="40" Text="Criar Agendamento" Clicked="OnAgendamentoClicked" />
             <Button FontSize="17" CornerRadius="40" Text="Histórico Lâmpada Ativa" Clicked="OnHistoricoClicked" />
             <Button FontSize="17" CornerRadius="40" Text="Consumo Lâmpada Ativa" Clicked="OnConsumoClicked" />
-            <Button FontSize="17" CornerRadius="40" Text="Criar Agendamento" Clicked="OnAgendamentoClicked" />
+            <Button FontSize="17" CornerRadius="40" Text="Monitorar Consumo Lâmpada Ativa" Clicked="OnHistoricoClicked" />
         </VerticalStackLayout>
 
     </VerticalStackLayout>

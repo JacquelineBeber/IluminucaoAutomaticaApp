@@ -1,12 +1,7 @@
 ﻿using IluminucaoAutomaticaApp.Models;
 using IluminucaoAutomaticaApp.Services;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+
 
 namespace IluminucaoAutomaticaApp.ViewModels
 {
@@ -14,6 +9,13 @@ namespace IluminucaoAutomaticaApp.ViewModels
     {
         private readonly IHistoricoService _historicoService;
         public ObservableCollection<Historico> Historico { get; set; } = new();
+
+        private bool _semHistorico;
+        public bool SemHistorico
+        {
+            get => _semHistorico;
+            set => SetProperty(ref _semHistorico, value);
+        }
         public HistoricoPageViewModel()
         {
             _historicoService = new HistoricoService();
@@ -21,8 +23,10 @@ namespace IluminucaoAutomaticaApp.ViewModels
         }
         private async Task CarregarHistoricoAsync()
         {
+            Carregando = true;
             var lista = await _historicoService.BuscarHistoricoAsync();
-            if (lista != null)
+
+            if (lista != null && lista.Any())
             {
                 var datasMomentoAcaoOrdenadas = lista
                     .Where(h => h.MomentoAcaoDataHora != null)
@@ -33,6 +37,9 @@ namespace IluminucaoAutomaticaApp.ViewModels
                 foreach (var item in datasMomentoAcaoOrdenadas)
                     Historico.Add(item);
             }
+
+            SemHistorico = !Historico.Any();
+            Carregando = false;
         }
 
     }
