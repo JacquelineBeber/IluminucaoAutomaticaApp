@@ -24,8 +24,13 @@ namespace IluminucaoAutomaticaApp.ViewModels
             var lista = await _historicoService.BuscarHistoricoAsync();
             if (lista != null)
             {
+                var datasMomentoAcaoOrdenadas = lista
+                    .Where(h => h.MomentoAcaoDataHora != null)
+                    .OrderByDescending(h => h.MomentoAcaoDataHora)
+                    .ToList();
+
                 Historico.Clear();
-                foreach (var item in lista)
+                foreach (var item in datasMomentoAcaoOrdenadas)
                     Historico.Add(item);
             }
         }

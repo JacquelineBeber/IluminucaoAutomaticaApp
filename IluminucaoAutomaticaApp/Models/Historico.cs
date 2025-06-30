@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -17,5 +18,15 @@ namespace IluminucaoAutomaticaApp.Models
 
         [JsonPropertyName("responsavel_acao")]
         public string? OrigemAcao { get; set; }
+
+        public DateTime? MomentoAcaoDataHora
+        {
+            get
+            {
+                if (DateTime.TryParseExact(MomentoAcao, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out var data))
+                    return data;
+                return null;
+            }
+        }
     }
 }
