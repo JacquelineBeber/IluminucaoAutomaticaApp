@@ -112,7 +112,7 @@ namespace IluminucaoAutomaticaApp.ViewModels
         private async void AtualizarResumoInicial()
         {
             DataReferenciaFormatada = $"Hoje:\n{DateTime.Today:dd/MM/yyyy}";
-            var dados = await _consumoService.BuscarConsumoDiarioAsync(DateTime.Today);
+            MonitorarConsumo dados = await _consumoService.BuscarConsumoDiarioAsync(DateTime.Today);
             ConsumoTotal = $"{dados.Consumo} KWh";
             Acionamentos = dados.Acionamentos;
         }

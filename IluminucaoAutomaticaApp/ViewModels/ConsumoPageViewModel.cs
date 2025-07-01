@@ -26,12 +26,12 @@ namespace IluminucaoAutomaticaApp.ViewModels
             var lista = await _consumoService.BuscarConsumoAsync();
             if (lista != null && lista.Any())
             {
-                var datasAcionamentoOrdenadas = lista
-                    .Where(c => c.AcionamentoDataHora != null)
-                    .OrderByDescending(c => c.AcionamentoDataHora)
-                    .ToList();
-                Consumo.Clear();
-                foreach (var item in datasAcionamentoOrdenadas)
+                //var datasAcionamentoOrdenadas = lista
+                //    .Where(c => c.AcionamentoDataHora != null)
+                //    .OrderByDescending(c => c.AcionamentoDataHora)
+                //    .ToList();
+                //Consumo.Clear();
+                foreach (var item in lista)
                     Consumo.Add(item);
             }
 

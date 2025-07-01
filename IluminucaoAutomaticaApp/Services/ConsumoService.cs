@@ -11,7 +11,7 @@ namespace IluminucaoAutomaticaApp.Services
         {
             _httpClient = new HttpClient
             {
-                BaseAddress = new Uri("https://uklj62bzxe.execute-api.sa-east-1.amazonaws.com/Desenvolvimento/lampada/")
+                BaseAddress = new Uri("https://uklj62bzxe.execute-api.sa-east-1.amazonaws.com/Desenvolvimento/consumo/")
             };
         }
 
@@ -19,7 +19,7 @@ namespace IluminucaoAutomaticaApp.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync("consumo");
+                var response = await _httpClient.GetAsync("listar");
 
                 var json = await response.Content.ReadAsStringAsync();
                 var doc = JsonDocument.Parse(json);
@@ -41,7 +41,7 @@ namespace IluminucaoAutomaticaApp.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync($"consumo/diario/{data:dd-MM-yyyy}");
+                var response = await _httpClient.GetAsync($"diario/{data:dd-MM-yyyy}");
                 response.EnsureSuccessStatusCode();
                 var json = await response.Content.ReadAsStringAsync();
                 return JsonSerializer.Deserialize<MonitorarConsumo>(json) ?? new MonitorarConsumo();
@@ -52,11 +52,11 @@ namespace IluminucaoAutomaticaApp.Services
             }
         }
 
-        public async Task<MonitorarConsumo> BuscarConsumoMensalAsync(int mes, int ano)
+        public async Task<MonitorarConsumo> BuscarConsumoMensalAsync(int ano, int mes)
         {
             try
             {
-                var response = await _httpClient.GetAsync($"consumo/mensal/ano-mes");
+                var response = await _httpClient.GetAsync($"mensal/{ano}/{mes}");
                 response.EnsureSuccessStatusCode();
                 var json = await response.Content.ReadAsStringAsync();
                 return JsonSerializer.Deserialize<MonitorarConsumo>(json) ?? new MonitorarConsumo();
@@ -71,7 +71,7 @@ namespace IluminucaoAutomaticaApp.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync($"consumo/anual/ano");
+                var response = await _httpClient.GetAsync($"anual/{ano}");
                 response.EnsureSuccessStatusCode();
                 var json = await response.Content.ReadAsStringAsync();
                 return JsonSerializer.Deserialize<MonitorarConsumo>(json) ?? new MonitorarConsumo();

@@ -159,7 +159,7 @@
                                    TextColor="Black"
                                    FontSize="18"
                                    FontAttributes="Bold"/>
-                            <Label Text="{Binding ConsumoTotal, StringFormat='{0} KWh'}"
+                            <Label Text="{Binding ConsumoTotal}"
                                    HorizontalTextAlignment="Center"
                                    VerticalTextAlignment="Center"
                                    TextColor="Black"
