@@ -1,14 +1,12 @@
 ﻿using IluminucaoAutomaticaApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IluminucaoAutomaticaApp.Services
 {
     interface IConsumoService
     {
         Task<List<Consumo>> BuscarConsumoAsync();
+        Task<MonitorarConsumo> BuscarConsumoDiarioAsync(DateTime data);
+        Task<MonitorarConsumo> BuscarConsumoMensalAsync(int mes, int ano);
+        Task<MonitorarConsumo> BuscarConsumoAnualAsync(int ano);
     }
 }

@@ -1,10 +1,5 @@
 ﻿using IluminucaoAutomaticaApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace IluminucaoAutomaticaApp.Services
 {
@@ -39,6 +34,51 @@ namespace IluminucaoAutomaticaApp.Services
             catch (Exception ex)
             {
                 return new List<Consumo>();
+            }
+        }
+
+        public async Task<MonitorarConsumo> BuscarConsumoDiarioAsync(DateTime data)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"consumo/diario/{data:dd-MM-yyyy}");
+                response.EnsureSuccessStatusCode();
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonSerializer.Deserialize<MonitorarConsumo>(json) ?? new MonitorarConsumo();
+            }
+            catch (Exception ex)
+            {
+                return new MonitorarConsumo();
+            }
+        }
+
+        public async Task<MonitorarConsumo> BuscarConsumoMensalAsync(int mes, int ano)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"consumo/mensal/ano-mes");
+                response.EnsureSuccessStatusCode();
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonSerializer.Deserialize<MonitorarConsumo>(json) ?? new MonitorarConsumo();
+            }
+            catch (Exception ex)
+            {
+                return new MonitorarConsumo();
+            }
+        }
+
+        public async Task<MonitorarConsumo> BuscarConsumoAnualAsync(int ano)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"consumo/anual/ano");
+                response.EnsureSuccessStatusCode();
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonSerializer.Deserialize<MonitorarConsumo>(json) ?? new MonitorarConsumo();
+            }
+            catch (Exception ex)
+            {
+                return new MonitorarConsumo();
             }
         }
     }

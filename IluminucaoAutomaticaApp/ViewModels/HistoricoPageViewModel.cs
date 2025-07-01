@@ -2,7 +2,6 @@
 using IluminucaoAutomaticaApp.Services;
 using System.Collections.ObjectModel;
 
-
 namespace IluminucaoAutomaticaApp.ViewModels
 {
     class HistoricoPageViewModel : BaseViewModel
