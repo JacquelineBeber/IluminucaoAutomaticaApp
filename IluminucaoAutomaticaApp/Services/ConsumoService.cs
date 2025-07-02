@@ -44,7 +44,13 @@ namespace IluminucaoAutomaticaApp.Services
                 var response = await _httpClient.GetAsync($"diario/{data:dd-MM-yyyy}");
                 response.EnsureSuccessStatusCode();
                 var json = await response.Content.ReadAsStringAsync();
-                return JsonSerializer.Deserialize<MonitorarConsumo>(json) ?? new MonitorarConsumo();
+                var doc = JsonDocument.Parse(json);
+                var root = doc.RootElement;
+                var consumoDiarioJson = root.GetProperty("consumo");
+
+                var consumoDiario = JsonSerializer.Deserialize<MonitorarConsumo>(consumoDiarioJson);
+                
+                return consumoDiario?? new MonitorarConsumo();
             }
             catch (Exception ex)
             {
@@ -59,7 +65,13 @@ namespace IluminucaoAutomaticaApp.Services
                 var response = await _httpClient.GetAsync($"mensal/{ano}/{mes}");
                 response.EnsureSuccessStatusCode();
                 var json = await response.Content.ReadAsStringAsync();
-                return JsonSerializer.Deserialize<MonitorarConsumo>(json) ?? new MonitorarConsumo();
+                var doc = JsonDocument.Parse(json);
+                var root = doc.RootElement;
+                var consumoMensalJson = root.GetProperty("consumo");
+
+                var consumoMennsal = JsonSerializer.Deserialize<MonitorarConsumo>(json);
+                
+                return consumoMennsal?? new MonitorarConsumo();
             }
             catch (Exception ex)
             {
@@ -74,7 +86,13 @@ namespace IluminucaoAutomaticaApp.Services
                 var response = await _httpClient.GetAsync($"anual/{ano}");
                 response.EnsureSuccessStatusCode();
                 var json = await response.Content.ReadAsStringAsync();
-                return JsonSerializer.Deserialize<MonitorarConsumo>(json) ?? new MonitorarConsumo();
+                var doc = JsonDocument.Parse(json);
+                var root = doc.RootElement;
+                var consumoAnualJson = root.GetProperty("consumo");
+
+                var consumoAnual = JsonSerializer.Deserialize<MonitorarConsumo>(json);
+                    
+                return  consumoAnual?? new MonitorarConsumo();
             }
             catch (Exception ex)
             {
