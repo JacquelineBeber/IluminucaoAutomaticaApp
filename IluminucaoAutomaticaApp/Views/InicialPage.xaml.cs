@@ -24,5 +24,14 @@ namespace IluminucaoAutomaticaApp.Views
                     await vm.AtivarLampadaAsync(lampada);
             }
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            if (BindingContext is InicialPageViewModel vm)
+            {
+                vm.PararTimer();
+            }
+        }
     }
 }
