@@ -5,12 +5,12 @@ namespace IluminucaoAutomaticaApp.Models
     class MonitorarConsumo
     {
         [JsonPropertyName("consumoTotal")]
-        public decimal Consumo { get; set; }
+        public decimal ConsumoTotal { get; set; }
 
         [JsonPropertyName("acionamentos")]
         public int Acionamentos { get; set; }
 
         [JsonPropertyName("historicoConsumo")]
-        public Consumo? HistoricoConsumo {get; set; }
+        public List<Consumo>? HistoricoConsumo {get; set; }
     }
 }

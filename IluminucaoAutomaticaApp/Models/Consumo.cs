@@ -14,7 +14,8 @@ namespace IluminucaoAutomaticaApp.Models
         [JsonPropertyName("energiaConsumida")]
         public decimal EnergiaConsumida { get; set; }
 
-        public DateTime? AcionamentoDataHora
+        public DateTime? 
+            DataHora
         {
             get
             {

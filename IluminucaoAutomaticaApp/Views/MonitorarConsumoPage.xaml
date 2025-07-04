@@ -57,7 +57,9 @@
                            FontSize="19"
                            TextColor="Black"
                            FontAttributes="Bold"/>
-                    <DatePicker HorizontalOptions="Center"
+                    <DatePicker x:Name="DataSelecionadaNoFiltro"
+                                Date="{Binding DataSelecionada}"
+                                HorizontalOptions="Center"
                                 FontSize="19"
                                 TextColor="Black"
                                 FontAttributes="Bold"
@@ -149,6 +151,7 @@
                     <Frame BackgroundColor="#0be2eb"
                            Padding="15"
                            CornerRadius="20"
+                           MaximumWidthRequest="170"
                            MinimumHeightRequest="150"
                            MinimumWidthRequest="160"
                            BorderColor="LightSlateGray"
@@ -159,7 +162,7 @@
                                    TextColor="Black"
                                    FontSize="18"
                                    FontAttributes="Bold"/>
-                            <Label Text="{Binding ConsumoTotal}"
+                            <Label Text="{Binding ConsumoTotal, StringFormat='{0:F9} KWh'}"
                                    HorizontalTextAlignment="Center"
                                    VerticalTextAlignment="Center"
                                    TextColor="Black"

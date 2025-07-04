@@ -27,6 +27,8 @@ namespace IluminucaoAutomaticaApp.ViewModels
 
             AtualizarResumoInicial();
         }
+        
+        public ObservableCollection<MonitorarConsumo> MonitorarConsumo { get; set; } = new();
 
         public ObservableCollection<string> TiposFiltro { get; } = new() { "Diário", "Mensal", "Anual" };
         public ObservableCollection<string> Meses { get; } = new();
@@ -95,8 +97,8 @@ namespace IluminucaoAutomaticaApp.ViewModels
             set => SetProperty(ref _dataReferenciaFormatada, value);
         }
 
-        private string _consumoTotal;
-        public string ConsumoTotal
+        private decimal _consumoTotal;
+        public decimal ConsumoTotal
         {
             get => _consumoTotal;
             set => SetProperty(ref _consumoTotal, value);
@@ -112,8 +114,10 @@ namespace IluminucaoAutomaticaApp.ViewModels
         private async void AtualizarResumoInicial()
         {
             DataReferenciaFormatada = $"Hoje:\n{DateTime.Today:dd/MM/yyyy}";
+            Console.WriteLine($"Data para ser filtrada: {DataReferenciaFormatada}");
             MonitorarConsumo dados = await _consumoService.BuscarConsumoDiarioAsync(DateTime.Today);
-            ConsumoTotal = $"{dados.Consumo} KWh";
+            MonitorarConsumo.Add(dados);
+            ConsumoTotal = dados.ConsumoTotal;
             Acionamentos = dados.Acionamentos;
         }
 
@@ -124,22 +128,23 @@ namespace IluminucaoAutomaticaApp.ViewModels
             {
                 DataReferenciaFormatada = $"Filtro Diário\n{DataSelecionada:dd/MM/yyyy}:";
                 MonitorarConsumo dados = await _consumoService.BuscarConsumoDiarioAsync(DataSelecionada);
-                ConsumoTotal = $"{dados.Consumo} KWh";
+                MonitorarConsumo.Add(dados);
+                ConsumoTotal = dados.ConsumoTotal;
                 Acionamentos = dados.Acionamentos;
             }
             else if(TipoFiltroSelecionado == "Mensal")
             {
                 int mes = DateTime.ParseExact(MesSelecionado, "MMMM", new System.Globalization.CultureInfo("pt-BR")).Month;
                 DataReferenciaFormatada = $"Filtro Mensal\n{MesSelecionado} / {AnoSelecionado}:";
-                MonitorarConsumo dados = await _consumoService.BuscarConsumoMensalAsync(mes, int.Parse(AnoSelecionado));
-                ConsumoTotal = $"{dados.Consumo} KWh";
+                MonitorarConsumo dados = await _consumoService.BuscarConsumoMensalAsync(int.Parse(AnoSelecionado), mes);
+                ConsumoTotal = dados.ConsumoTotal;
                 Acionamentos = dados.Acionamentos;
             }
             else if (TipoFiltroSelecionado == "Anual")
             {
                 DataReferenciaFormatada = $"Filtro Anual\n{AnoSelecionado}:";
                 MonitorarConsumo dados = await _consumoService.BuscarConsumoAnualAsync(int.Parse(AnoSelecionado));
-                ConsumoTotal = $"{dados.Consumo} KWh";
+                ConsumoTotal = dados.ConsumoTotal;
                 Acionamentos = dados.Acionamentos;
             }
             Carregando = false;

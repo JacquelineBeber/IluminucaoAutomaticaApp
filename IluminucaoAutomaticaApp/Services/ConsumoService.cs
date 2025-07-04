@@ -41,7 +41,8 @@ namespace IluminucaoAutomaticaApp.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync($"diario/{data:dd-MM-yyyy}");
+                string dataFormatada = data.ToString("dd-MM-yyyy");
+                var response = await _httpClient.GetAsync($"diario/{dataFormatada}");
                 response.EnsureSuccessStatusCode();
                 var json = await response.Content.ReadAsStringAsync();
                 var doc = JsonDocument.Parse(json);
@@ -69,9 +70,9 @@ namespace IluminucaoAutomaticaApp.Services
                 var root = doc.RootElement;
                 var consumoMensalJson = root.GetProperty("consumo");
 
-                var consumoMennsal = JsonSerializer.Deserialize<MonitorarConsumo>(json);
+                var consumoMensal = JsonSerializer.Deserialize<MonitorarConsumo>(consumoMensalJson);
                 
-                return consumoMennsal?? new MonitorarConsumo();
+                return consumoMensal?? new MonitorarConsumo();
             }
             catch (Exception ex)
             {
@@ -90,7 +91,7 @@ namespace IluminucaoAutomaticaApp.Services
                 var root = doc.RootElement;
                 var consumoAnualJson = root.GetProperty("consumo");
 
-                var consumoAnual = JsonSerializer.Deserialize<MonitorarConsumo>(json);
+                var consumoAnual = JsonSerializer.Deserialize<MonitorarConsumo>(consumoAnualJson);
                     
                 return  consumoAnual?? new MonitorarConsumo();
             }
