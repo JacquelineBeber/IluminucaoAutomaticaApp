@@ -12,7 +12,7 @@ namespace IluminucaoAutomaticaApp.Models
         [JsonPropertyName("nome")]
         public string? Nome { get; set; }
 
-        [JsonPropertyName("momentoAcionamento")]
+        [JsonPropertyName("momento_acionamento")]
         public string? MomentoAcionamento { get; set; }
 
         [JsonPropertyName("acao")]

@@ -27,11 +27,6 @@ namespace IluminucaoAutomaticaApp.ViewModels
 
             if (lista != null && lista.Any())
             {
-                //var datasMomentoAcaoOrdenadas = lista
-                //    .Where(h => h.MomentoAcaoDataHora != null)
-                //    .OrderByDescending(h => h.MomentoAcaoDataHora)
-                //    .ToList();
-
                 Historico.Clear();
                 foreach (var item in lista)
                     Historico.Add(item);

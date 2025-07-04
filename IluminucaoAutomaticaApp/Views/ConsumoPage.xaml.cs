@@ -10,7 +10,6 @@ public partial class ConsumoPage : ContentPage
 	{
 		InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
-        //BindingContext = new ConsumoPageViewModel();
 
         _viewModel = new ConsumoPageViewModel();
         BindingContext = _viewModel;

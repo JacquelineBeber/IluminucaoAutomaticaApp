@@ -1,5 +1,6 @@
 ﻿using IluminucaoAutomaticaApp.Models;
 using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace IluminucaoAutomaticaApp.Services
 {
@@ -14,6 +15,7 @@ namespace IluminucaoAutomaticaApp.Services
                 BaseAddress = new Uri("https://uklj62bzxe.execute-api.sa-east-1.amazonaws.com/Desenvolvimento/agendamento/")
             };
         }
+
         public async Task<bool> CadastrarAgendamentoAsync(Agendamento agendamento)
         {
             try
@@ -26,6 +28,27 @@ namespace IluminucaoAutomaticaApp.Services
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        public async Task<List<Agendamento>> BuscarAgendamentosAsync()
+        {
+            try
+            { 
+                var response = await _httpClient.GetAsync($"listar");
+
+                var json = await response.Content.ReadAsStringAsync();
+                var doc = JsonDocument.Parse(json);
+                var root = doc.RootElement;
+                var agendamentosJson = root.GetProperty("agendamentos");
+
+                var agendamentos = JsonSerializer.Deserialize<List<Agendamento>>(agendamentosJson);
+
+                return agendamentos ?? new List<Agendamento>();
+            }
+            catch (Exception ex)
+            {
+                return new List<Agendamento>();
             }
         }
     }

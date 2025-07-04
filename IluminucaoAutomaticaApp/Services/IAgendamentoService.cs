@@ -4,6 +4,8 @@ namespace IluminucaoAutomaticaApp.Services
 {
     interface IAgendamentoService
     {
-        Task<bool> CadastrarAgendamentoAsync(Agendamento agendamento);
+        public Task<bool> CadastrarAgendamentoAsync(Agendamento agendamento);
+
+        public Task<List<Agendamento>> BuscarAgendamentosAsync();
     }
 }

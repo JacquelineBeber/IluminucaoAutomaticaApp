@@ -45,6 +45,7 @@
         <VerticalStackLayout Padding="20" Spacing="15">
             <Button FontSize="17" CornerRadius="40" Text="Cadastrar Lâmpada" Clicked="OnCadastrarLampadaClicked" />
             <Button FontSize="17" CornerRadius="40" Text="Criar Agendamento" Clicked="OnAgendamentoClicked" />
+            <Button FontSize="17" CornerRadius="40" Text="Acompanhar Agendamentos" Clicked="OnAcompanharAgendamentosClicked" />
             <Button FontSize="17" CornerRadius="40" Text="Histórico Lâmpada Ativa" Clicked="OnHistoricoClicked" />
             <Button FontSize="17" CornerRadius="40" Text="Consumo Lâmpada Ativa" Clicked="OnConsumoClicked" />
             <Button FontSize="17" CornerRadius="40" Text="Monitorar Consumo Lâmpada Ativa" Clicked="OnMonitorarConsumoClicked" />

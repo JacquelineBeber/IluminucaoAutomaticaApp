@@ -39,6 +39,11 @@ public partial class MenuPage : ContentPage
         Application.Current.MainPage = new NavigationPage(new AgendamentoPage());
     }
 
+    private void OnAcompanharAgendamentosClicked(object sender, EventArgs e)
+    {
+        Application.Current.MainPage = new NavigationPage(new AcompanharAgendamentosPage());
+    }
+
     private void OnMonitorarConsumoClicked(object sender, EventArgs e)
     {
         Application.Current.MainPage = new NavigationPage(new MonitorarConsumoPage());

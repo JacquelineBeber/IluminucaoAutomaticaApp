@@ -10,7 +10,6 @@ public partial class HistoricoPage : ContentPage
 	{
 		InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
-        //BindingContext = new HistoricoPageViewModel();
 
         _viewModel = new HistoricoPageViewModel();
         BindingContext = _viewModel;

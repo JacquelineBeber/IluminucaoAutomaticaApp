@@ -67,6 +67,9 @@
 	  <Compile Update="AppFlyout.xaml.cs">
 	    <DependentUpon>AppFlyout.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\AcompanharAgendamentosPage.xaml.cs">
+	    <DependentUpon>AcompanharAgendamentosPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\InicialPage.xaml.cs">
 	    <DependentUpon>InicialPage.xaml</DependentUpon>
 	  </Compile>
@@ -89,6 +92,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ConsumoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AcompanharAgendamentosPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\HistoricoPage.xaml">
