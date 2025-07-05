@@ -1,6 +1,7 @@
 ﻿using IluminucaoAutomaticaApp.Models;
 using IluminucaoAutomaticaApp.Services;
 using System.Collections.ObjectModel;
+using System.Security.Cryptography;
 using System.Windows.Input;
 
 namespace IluminucaoAutomaticaApp.ViewModels
@@ -27,7 +28,7 @@ namespace IluminucaoAutomaticaApp.ViewModels
 
             AtualizarResumoInicial();
         }
-        
+
         public ObservableCollection<MonitorarConsumo> MonitorarConsumo { get; set; } = new();
 
         public ObservableCollection<string> TiposFiltro { get; } = new() { "Diário", "Mensal", "Anual" };
@@ -132,7 +133,7 @@ namespace IluminucaoAutomaticaApp.ViewModels
                 ConsumoTotal = dados.ConsumoTotal;
                 Acionamentos = dados.Acionamentos;
             }
-            else if(TipoFiltroSelecionado == "Mensal")
+            else if (TipoFiltroSelecionado == "Mensal")
             {
                 int mes = DateTime.ParseExact(MesSelecionado, "MMMM", new System.Globalization.CultureInfo("pt-BR")).Month;
                 DataReferenciaFormatada = $"Filtro Mensal\n{MesSelecionado} / {AnoSelecionado}:";
@@ -148,6 +149,6 @@ namespace IluminucaoAutomaticaApp.ViewModels
                 Acionamentos = dados.Acionamentos;
             }
             Carregando = false;
-        } 
+        }
     }
 }
