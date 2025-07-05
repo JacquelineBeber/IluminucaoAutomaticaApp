@@ -67,7 +67,7 @@
                 </HorizontalStackLayout>
 
                 <!--Filtro Mensal-->
-                <HorizontalStackLayout HorizontalOptions="Center"
+                <VerticalStackLayout HorizontalOptions="Center"
                                        Spacing="5"
                                        Padding="10"
                                        IsVisible="{Binding IsFiltroMensal}">
@@ -78,27 +78,31 @@
                            FontSize="19"
                            TextColor="Black"
                            FontAttributes="Bold"/>
-                    <Picker TitleColor="Gray"
-                            TextColor="Black"
-                            FontAttributes="Bold"
-                            HorizontalOptions="Center"
-                            HorizontalTextAlignment="Center"
-                            MinimumWidthRequest="70"
-                            FontSize="18"
-                            Title="Ano"
-                            ItemsSource="{Binding Anos}"
-                            SelectedItem="{Binding AnoSelecionado}"/>
-                    <Picker TitleColor="Gray"
-                            TextColor="Black"
-                            FontAttributes="Bold"
-                            HorizontalOptions="Center"
-                            HorizontalTextAlignment="Center"
-                            MinimumWidthRequest="70"
-                            FontSize="18"
-                            Title="Mês"
-                            ItemsSource="{Binding Meses}"
-                            SelectedItem="{Binding MesSelecionado}"/>
-                </HorizontalStackLayout>
+                    <HorizontalStackLayout VerticalOptions="Center"
+                                           HorizontalOptions="Center">
+                        <Picker TitleColor="Gray"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                MinimumWidthRequest="70"
+                                FontSize="18"
+                                Title="Ano"
+                                ItemsSource="{Binding Anos}"
+                                SelectedItem="{Binding AnoSelecionado}"/>
+                        <Picker TitleColor="Gray"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                MinimumWidthRequest="70"
+                                FontSize="18"
+                                Title="Mês"
+                                ItemsSource="{Binding Meses}"
+                                SelectedItem="{Binding MesSelecionado}"/>
+                    </HorizontalStackLayout>
+                    
+                </VerticalStackLayout>
                 
                 <!--Filtro Anual-->
                 <HorizontalStackLayout HorizontalOptions="Center"
@@ -137,7 +141,7 @@
                        FontSize="20"
                        TextColor="Black"
                        FontAttributes="Bold"
-                       Margin="0,30,0,0"/>
+                       Margin="0,20,0,0"/>
 
                 <ActivityIndicator IsRunning="{Binding Carregando}"
                                    IsVisible="{Binding Carregando}"
@@ -148,7 +152,7 @@
                 <!--Consumo Total e Acionamentos-->
                 <HorizontalStackLayout HorizontalOptions="Center"
                                        Spacing="20"
-                                       Margin="0,30,0,0">
+                                       Margin="0,15,0,0">
                     <Frame BackgroundColor="#5ce1e6"
                            Padding="15"
                            CornerRadius="20"
@@ -164,14 +168,14 @@
                                    LineBreakMode="WordWrap"
                                    HorizontalTextAlignment="Center"
                                    TextColor="Black"
-                                   FontSize="18"
+                                   FontSize="15"
                                    Padding="0,10,0,0"
                                    FontAttributes="Bold"/>
                             <Label Text="{Binding Acionamentos}"
                                    HorizontalTextAlignment="Center"
                                    VerticalTextAlignment="Center"
                                    TextColor="Black"
-                                   FontSize="18"
+                                   FontSize="15"
                                    Padding="0,10,0,0"
                                    FontAttributes="Bold"/>
                         </VerticalStackLayout>

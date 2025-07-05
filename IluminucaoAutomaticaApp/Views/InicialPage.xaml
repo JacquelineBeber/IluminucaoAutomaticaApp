@@ -58,7 +58,7 @@
                                 Grid.Column="0"
                                 BackgroundColor="LightGreen"
                                 TextColor="DarkGreen"
-                                WidthRequest="90"
+                                WidthRequest="100"
                                 CornerRadius="40"
                                 Command="{Binding LigarCommand}"
                                 CommandParameter="{Binding LampadaPrincipal}"/>
@@ -67,7 +67,7 @@
                                 Grid.Column="1"
                                 BackgroundColor="LightCoral"
                                 TextColor="DarkRed"
-                                WidthRequest="90"
+                                WidthRequest="100"
                                 CornerRadius="40"
                                 Command="{Binding DesligarCommand}"
                                 CommandParameter="{Binding LampadaPrincipal}"/>
@@ -124,9 +124,9 @@
 
                                         <Button Grid.Column="0"
                                                 Text="Ativar"
-                                                BackgroundColor="White"
+                                                BackgroundColor="#4eb2d8"
                                                 TextColor="Green"
-                                                WidthRequest="70"
+                                                WidthRequest="80"
                                                 HeightRequest="40"
                                                 CornerRadius="40"
                                                 Command="{Binding  Source={RelativeSource AncestorType={x:Type local:InicialPageViewModel}}, Path=AtivarCommand}"

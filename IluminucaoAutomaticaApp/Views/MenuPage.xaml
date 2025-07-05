@@ -8,8 +8,7 @@
     <VerticalStackLayout Spacing="10">
 
         <Grid BackgroundColor="#0cb4ff"
-              Padding="10"
-              HeightRequest="60"
+              HeightRequest="70"
               VerticalOptions="Start">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -17,29 +16,29 @@
             </Grid.ColumnDefinitions>
 
             <Button Text="X"
-                FontSize="24"
-                BackgroundColor="Transparent"
-                TextColor="Black"
-                Clicked="OnFecharMenu"
-                Padding="0"
-                WidthRequest="40"
-                HeightRequest="40"
-                VerticalOptions="Center"
-                AbsoluteLayout.LayoutBounds="10,0.5,40,40"
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                />
+                    FontSize="24"
+                    BackgroundColor="Transparent"
+                    TextColor="Black"
+                    Clicked="OnFecharMenu"
+                    Padding="0"
+                    Margin="10"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    VerticalOptions="Center"
+                    AbsoluteLayout.LayoutBounds="10,0.5,40,40"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
             <Button Grid.Column="1"
-                   Text="Sistema de Iluminação Automática"
-                   BackgroundColor="Transparent"
-                   TextColor="Black"
-                   FontAttributes="Bold"
-                   Clicked="OnTituloClicked"
-                   FontSize="18"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"
-                   AbsoluteLayout.LayoutBounds="0.5,0.5,1,40"
-                   AbsoluteLayout.LayoutFlags="All"/>
+                    Text="Sistema de Iluminação Automática"
+                    BackgroundColor="Transparent"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    Clicked="OnTituloClicked"
+                    LineBreakMode="WordWrap"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,1,40"
+                    AbsoluteLayout.LayoutFlags="All"/>
         </Grid>
 
         <VerticalStackLayout Padding="20" Spacing="15">
