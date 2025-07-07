@@ -1,11 +1,6 @@
 ﻿using IluminucaoAutomaticaApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Json;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace IluminucaoAutomaticaApp.Services
 {
@@ -43,7 +38,9 @@ namespace IluminucaoAutomaticaApp.Services
         {
             try
             {
-                var response = await _httpClient.PostAsync("ligar/app", null);
+                var dados = new { };
+
+                var response = await _httpClient.PostAsJsonAsync("ligar/app", dados);
                 return response.IsSuccessStatusCode;
             }
             catch (Exception)
@@ -55,7 +52,9 @@ namespace IluminucaoAutomaticaApp.Services
         {
             try
             {
-                var response = await _httpClient.PostAsync("desligar/app", null);
+                var dados = new { };
+
+                var response = await _httpClient.PostAsJsonAsync("desligar/app", dados);
                 return response.IsSuccessStatusCode;
             }
             catch (Exception)

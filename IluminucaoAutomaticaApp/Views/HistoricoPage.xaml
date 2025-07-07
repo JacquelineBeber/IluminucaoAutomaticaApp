@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:componentes="clr-namespace:IluminucaoAutomaticaApp.Views.Componentes"
@@ -21,6 +22,23 @@
                    TextColor="Black"
                    HorizontalOptions="Center"
                    Margin="0,10"/>
+
+                <ActivityIndicator IsRunning="{Binding Carregando}"
+                   IsVisible="{Binding Carregando}"
+                   Color="DarkGray"
+                   HorizontalOptions="Center"
+                   Margin="0,10" />
+
+                <Label x:Name="LabelSemHistorico"
+                       Text="A lâmpada ainda não possui nenhum histórico!"
+                       Padding="10"
+                       HorizontalTextAlignment="Center"
+                       TextColor="DarkRed"
+                       FontAttributes="Italic"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       Opacity="0"
+                       IsVisible="False"/>
 
                 <CollectionView ItemsSource="{Binding Historico}"
                             Margin="30,0"

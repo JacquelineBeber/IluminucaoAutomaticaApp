@@ -1,10 +1,5 @@
 ﻿using IluminucaoAutomaticaApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace IluminucaoAutomaticaApp.Services
 {
@@ -16,7 +11,7 @@ namespace IluminucaoAutomaticaApp.Services
         {
             _httpClient = new HttpClient
             {
-                BaseAddress = new Uri("https://uklj62bzxe.execute-api.sa-east-1.amazonaws.com/Desenvolvimento/lampada/")
+                BaseAddress = new Uri("https://uklj62bzxe.execute-api.sa-east-1.amazonaws.com/Desenvolvimento/consumo/")
             };
         }
 
@@ -24,7 +19,7 @@ namespace IluminucaoAutomaticaApp.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync("consumo");
+                var response = await _httpClient.GetAsync("listar");
 
                 var json = await response.Content.ReadAsStringAsync();
                 var doc = JsonDocument.Parse(json);
@@ -39,6 +34,70 @@ namespace IluminucaoAutomaticaApp.Services
             catch (Exception ex)
             {
                 return new List<Consumo>();
+            }
+        }
+
+        public async Task<MonitorarConsumo> BuscarConsumoDiarioAsync(DateTime data)
+        {
+            try
+            {
+                string dataFormatada = data.ToString("dd-MM-yyyy");
+                var response = await _httpClient.GetAsync($"diario/{dataFormatada}");
+                response.EnsureSuccessStatusCode();
+                var json = await response.Content.ReadAsStringAsync();
+                var doc = JsonDocument.Parse(json);
+                var root = doc.RootElement;
+                var consumoDiarioJson = root.GetProperty("consumo");
+
+                var consumoDiario = JsonSerializer.Deserialize<MonitorarConsumo>(consumoDiarioJson);
+                
+                return consumoDiario?? new MonitorarConsumo();
+            }
+            catch (Exception ex)
+            {
+                return new MonitorarConsumo();
+            }
+        }
+
+        public async Task<MonitorarConsumo> BuscarConsumoMensalAsync(int ano, int mes)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"mensal/{ano}/{mes}");
+                response.EnsureSuccessStatusCode();
+                var json = await response.Content.ReadAsStringAsync();
+                var doc = JsonDocument.Parse(json);
+                var root = doc.RootElement;
+                var consumoMensalJson = root.GetProperty("consumo");
+
+                var consumoMensal = JsonSerializer.Deserialize<MonitorarConsumo>(consumoMensalJson);
+                
+                return consumoMensal?? new MonitorarConsumo();
+            }
+            catch (Exception ex)
+            {
+                return new MonitorarConsumo();
+            }
+        }
+
+        public async Task<MonitorarConsumo> BuscarConsumoAnualAsync(int ano)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"anual/{ano}");
+                response.EnsureSuccessStatusCode();
+                var json = await response.Content.ReadAsStringAsync();
+                var doc = JsonDocument.Parse(json);
+                var root = doc.RootElement;
+                var consumoAnualJson = root.GetProperty("consumo");
+
+                var consumoAnual = JsonSerializer.Deserialize<MonitorarConsumo>(consumoAnualJson);
+                    
+                return  consumoAnual?? new MonitorarConsumo();
+            }
+            catch (Exception ex)
+            {
+                return new MonitorarConsumo();
             }
         }
     }

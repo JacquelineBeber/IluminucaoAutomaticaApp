@@ -4,38 +4,41 @@
              x:Class="IluminucaoAutomaticaApp.Views.Componentes.CabecalhoView">
 
     <Grid BackgroundColor="#0cb4ff"
-          Padding="10"
-          HeightRequest="60"
-          VerticalOptions="Start">
+          VerticalOptions="Center"
+          HorizontalOptions="Fill"
+          MinimumHeightRequest="70">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Button Text="≡"
-            FontSize="30"
-            BackgroundColor="Transparent"
-            TextColor="Black"
-            Clicked="OnMenuClicked"
-            Padding="0"
-            WidthRequest="40"
-            HeightRequest="40"
-            VerticalOptions="Center"
-            AbsoluteLayout.LayoutBounds="10,0.5,40,40"
-            AbsoluteLayout.LayoutFlags="PositionProportional"
-            />
+                FontSize="30"
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                Clicked="OnMenuClicked"
+                Padding="0"
+                Margin="10"
+                WidthRequest="40"
+                HeightRequest="40"
+                VerticalOptions="Center"
+                AbsoluteLayout.LayoutBounds="10,0.5,40,40"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                />
 
         <Button Grid.Column="1"
-               Text="Sistema de Iluminação Automática"
-               BackgroundColor="Transparent"
-               TextColor="Black"
-               FontAttributes="Bold"
-               Clicked="OnTituloClicked"
-               FontSize="18"
-               VerticalOptions="Center"
-               HorizontalOptions="Center"
-               AbsoluteLayout.LayoutBounds="0.5,0.5,1,40"
-               AbsoluteLayout.LayoutFlags="All"/>
+                Text="Sistema de Iluminação Automática"
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                FontAttributes="Bold"
+                Clicked="OnTituloClicked"
+                LineBreakMode="WordWrap"
+                FontSize="18"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                MinimumHeightRequest="70"
+                AbsoluteLayout.LayoutBounds="0.5,0.5,1,40"
+                AbsoluteLayout.LayoutFlags="All"/>
     </Grid>
 </ContentView>
 

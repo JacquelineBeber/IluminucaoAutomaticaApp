@@ -1,8 +1,4 @@
-﻿using System.ComponentModel;
-using System.Windows.Input;
-using CommunityToolkit.Mvvm.Messaging;
-
-namespace IluminucaoAutomaticaApp.Views.Componentes;
+﻿namespace IluminucaoAutomaticaApp.Views.Componentes;
 
 public partial class CabecalhoView : ContentView
 {

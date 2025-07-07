@@ -58,7 +58,7 @@
                                 Grid.Column="0"
                                 BackgroundColor="LightGreen"
                                 TextColor="DarkGreen"
-                                WidthRequest="90"
+                                WidthRequest="100"
                                 CornerRadius="40"
                                 Command="{Binding LigarCommand}"
                                 CommandParameter="{Binding LampadaPrincipal}"/>
@@ -67,7 +67,7 @@
                                 Grid.Column="1"
                                 BackgroundColor="LightCoral"
                                 TextColor="DarkRed"
-                                WidthRequest="90"
+                                WidthRequest="100"
                                 CornerRadius="40"
                                 Command="{Binding DesligarCommand}"
                                 CommandParameter="{Binding LampadaPrincipal}"/>
@@ -92,46 +92,59 @@
                                Padding="10"
                                Margin="5">
 
-                            <VerticalStackLayout Spacing="5" Padding="10" VerticalOptions="Fill"    >
-                                <Label Text="{Binding Nome}"
-                                       TextColor="Black"
-                                       FontSize="18"
-                                       HorizontalOptions="Center"
-                                       FontAttributes="Bold" />
+                            <Grid RowDefinitions="Auto,*,Auto">
+                                <VerticalStackLayout Grid.Row="0"
+                                                     Spacing="5" 
+                                                     Padding="10,0,10,10" 
+                                                     VerticalOptions="Fill"    >
+                                    <Label Text="{Binding Nome}"
+                                           TextColor="Black"
+                                           FontSize="18"
+                                           HorizontalOptions="Center"
+                                           HorizontalTextAlignment="Center"
+                                           FontAttributes="Bold" />
 
-                                <Label Text="{Binding Ativa, Converter={StaticResource BoolToAtivaInativaConverter}}"
-                                       HorizontalOptions="Center"
-                                       FontSize="18"                          
-                                       TextColor="Red" />
+                                    <Label Text="{Binding Ativa, Converter={StaticResource BoolToAtivaInativaConverter}}"
+                                           HorizontalOptions="Center"
+                                           FontSize="18"                          
+                                           TextColor="Red" />
+                                </VerticalStackLayout>
 
-                                <Grid ColumnSpacing="10" VerticalOptions="End" Margin="0,10,0,0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
+                                <!--<BoxView Grid.Row="1"
+                                         BackgroundColor="#dce4eb"/>-->
 
-                                    <Button Grid.Column="0"
-                                            Text="Ativar"
-                                            BackgroundColor="White"
-                                            TextColor="Green"
-                                            WidthRequest="80"
-                                            HeightRequest="40"
-                                            CornerRadius="40"
-                                            Command="{Binding  Source={RelativeSource AncestorType={x:Type local:InicialPageViewModel}}, Path=AtivarCommand}"
-                                            CommandParameter="{Binding .}"/>
+                                <Grid Grid.Row="2"
+                                      ColumnSpacing="10" 
+                                      HorizontalOptions="Center"
+                                      Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
 
-                                    <ImageButton Grid.Column="1"
-                                         Source="lixeira.png"
-                                         BackgroundColor="Transparent"
-                                         WidthRequest="40"
-                                         HeightRequest="40"
-                                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:InicialPageViewModel}}, Path=ExcluirCommand}"
-                                         CommandParameter="{Binding .}"
-                                         Padding="0"
-                                         HorizontalOptions="End"
-                                         VerticalOptions="Center"/>
-                                </Grid>
-                            </VerticalStackLayout>
+                                        <Button Grid.Column="0"
+                                                Text="Ativar"
+                                                BackgroundColor="#4eb2d8"
+                                                TextColor="Green"
+                                                WidthRequest="80"
+                                                HeightRequest="40"
+                                                CornerRadius="40"
+                                                Command="{Binding  Source={RelativeSource AncestorType={x:Type local:InicialPageViewModel}}, Path=AtivarCommand}"
+                                                CommandParameter="{Binding .}"/>
+
+                                        <ImageButton Grid.Column="1"
+                                             Source="lixeira.png"
+                                             BackgroundColor="Transparent"
+                                             WidthRequest="30"
+                                             HeightRequest="30"
+                                             Command="{Binding Source={RelativeSource AncestorType={x:Type local:InicialPageViewModel}}, Path=ExcluirCommand}"
+                                             CommandParameter="{Binding .}"
+                                             Padding="0"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="Center"/>
+                                    </Grid>
+                                
+                            </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

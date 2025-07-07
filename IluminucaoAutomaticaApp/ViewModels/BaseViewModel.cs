@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IluminucaoAutomaticaApp.ViewModels
 {
     class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
+        private bool _carregando;
 
         protected void OnPropertyChanged([CallerMemberName] string nomePropriedade = null)
         {
@@ -25,6 +21,12 @@ namespace IluminucaoAutomaticaApp.ViewModels
             backingStore = value;
             OnPropertyChanged(nomePropriedade);
             return true;
+        }
+
+        public bool Carregando
+        {
+            get => _carregando;
+            set => SetProperty(ref _carregando, value);
         }
     }
 }

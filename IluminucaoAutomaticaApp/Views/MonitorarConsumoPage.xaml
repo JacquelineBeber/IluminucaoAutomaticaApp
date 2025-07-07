@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:componentes="clr-namespace:IluminucaoAutomaticaApp.Views.Componentes"
+             xmlns:viewmodels="clr-namespace:IluminucaoAutomaticaApp.ViewModels"
+             x:Class="IluminucaoAutomaticaApp.Views.MonitorarConsumoPage"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             BackgroundColor="#e7edf8"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MonitorarConsumoPageViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto,*">
+        <componentes:CabecalhoView Grid.Row="0" />
+
+        <ScrollView Grid.Row="1" 
+                    HorizontalOptions="Center">
+            <VerticalStackLayout>
+                <Label Text="Monitorar Consumo"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,10,0,0"/>
+
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Margin="0,10,0,0">
+                    <Label Text="Filtro:"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="18"
+                           TextColor="Black"
+                           FontAttributes="Bold"/>
+                    <Picker TitleColor="Gray"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            FontSize="18"
+                            Title="  Selecione  "
+                            ItemsSource="{Binding TiposFiltro}"
+                            SelectedItem="{Binding TipoFiltroSelecionado}"/>
+                </HorizontalStackLayout>
+
+                <!--Filtro Diário-->
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Spacing="5"
+                                       Padding="10"
+                                       IsVisible="{Binding IsFiltroDiario}">
+                    <Label Text="Escolha o dia:"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="19"
+                           TextColor="Black"
+                           FontAttributes="Bold"/>
+                    <DatePicker x:Name="DataSelecionadaNoFiltro"
+                                Date="{Binding DataSelecionada}"
+                                HorizontalOptions="Center"
+                                FontSize="19"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                MaximumDate="{x:Static sys:DateTime.Today}"/>
+                </HorizontalStackLayout>
+
+                <!--Filtro Mensal-->
+                <VerticalStackLayout HorizontalOptions="Center"
+                                       Spacing="5"
+                                       Padding="10"
+                                       IsVisible="{Binding IsFiltroMensal}">
+                    <Label Text="Escolha o ano e o mês:"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="19"
+                           TextColor="Black"
+                           FontAttributes="Bold"/>
+                    <HorizontalStackLayout VerticalOptions="Center"
+                                           HorizontalOptions="Center">
+                        <Picker TitleColor="Gray"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                MinimumWidthRequest="70"
+                                FontSize="18"
+                                Title="Ano"
+                                ItemsSource="{Binding Anos}"
+                                SelectedItem="{Binding AnoSelecionado}"/>
+                        <Picker TitleColor="Gray"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                MinimumWidthRequest="70"
+                                FontSize="18"
+                                Title="Mês"
+                                ItemsSource="{Binding Meses}"
+                                SelectedItem="{Binding MesSelecionado}"/>
+                    </HorizontalStackLayout>
+                    
+                </VerticalStackLayout>
+                
+                <!--Filtro Anual-->
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Spacing="5"
+                                       Padding="10"
+                                       IsVisible="{Binding IsFiltroAnual}">
+                    <Label Text="Escolha o ano:"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="19"
+                           TextColor="Black"
+                           FontAttributes="Bold"/>
+                    <Picker TitleColor="Gray"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            MinimumWidthRequest="70"
+                            FontSize="18"
+                            Title="Ano"
+                            ItemsSource="{Binding Anos}"
+                            SelectedItem="{Binding AnoSelecionado}"/>
+                </HorizontalStackLayout>
+
+                <Button Text="Filtrar"
+                        MaximumWidthRequest="150"
+                        Command="{Binding FiltrarCommand}"
+                        IsVisible="{Binding MostrarBtnFiltrar}" 
+                        Margin="0,10,0,0"/>
+
+                <Label Text="{Binding DataReferenciaFormatada}"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="20"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       Margin="0,20,0,0"/>
+
+                <ActivityIndicator IsRunning="{Binding Carregando}"
+                                   IsVisible="{Binding Carregando}"
+                                   Color="DarkGray"
+                                   HorizontalOptions="Center"
+                                   Margin="0,10" />
+                
+                <!--Consumo Total e Acionamentos-->
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Spacing="20"
+                                       Margin="0,15,0,0">
+                    <Frame BackgroundColor="#5ce1e6"
+                           Padding="15"
+                           CornerRadius="20"
+                           MaximumHeightRequest="150"
+                           MaximumWidthRequest="160"
+                           BorderColor="LightSlateGray">
+                        <VerticalStackLayout>
+                            <Image Source="lampada.png" 
+                               HeightRequest="40" 
+                               WidthRequest="40" 
+                               HorizontalOptions="Center"/>
+                            <Label Text="Acionamentos:"
+                                   LineBreakMode="WordWrap"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="15"
+                                   Padding="0,10,0,0"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding Acionamentos}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="15"
+                                   Padding="0,10,0,0"
+                                   FontAttributes="Bold"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </HorizontalStackLayout>
+
+                <Frame BackgroundColor="White"
+                       CornerRadius="100"
+                       Padding="0"
+                       Margin="0,30,0,0"
+                       HeightRequest="200"
+                       WidthRequest="200"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       HasShadow="True"
+                       BorderColor="#0be2eb"
+                       >
+                    <Grid>
+                        <Ellipse Stroke="#0be2eb" StrokeThickness="10" Fill="Transparent"/>
+                        <VerticalStackLayout Spacing="6">
+                            <Image Source="power.png" 
+                                   HeightRequest="40" 
+                                   WidthRequest="40" 
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Start"
+                                   Margin="0,20,0,0"/>
+                            <Label Text="Consumo:"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Black"
+                                    FontSize="18"
+                                    FontAttributes="Bold"/>
+                            <Label Text="{Binding ConsumoTotal, StringFormat='{0:F9} KWh'}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="#8d0f71"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   Padding="20,0,20,0"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

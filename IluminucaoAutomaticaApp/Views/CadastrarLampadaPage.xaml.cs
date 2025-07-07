@@ -1,4 +1,3 @@
-using IluminucaoAutomaticaApp.Services;
 using IluminucaoAutomaticaApp.ViewModels;
 
 namespace IluminucaoAutomaticaApp.Views;
