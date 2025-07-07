@@ -37,7 +37,7 @@ namespace IluminucaoAutomaticaApp.ViewModels
 
         private void IniciarTimerAtualizacao()
         {
-            _timer = new System.Timers.Timer(1000); // 1000ms = 1s
+            _timer = new System.Timers.Timer(1000); // 1000ms = 1s  100000000ms = 27H
             _timer.Elapsed += async (s, e) =>
             {
                 await MainThread.InvokeOnMainThreadAsync(async () =>
@@ -70,21 +70,25 @@ namespace IluminucaoAutomaticaApp.ViewModels
                     OnPropertyChanged(nameof(LampadaPrincipal));
                 }
 
-                bool houveMudancaNasOutras = lista
-                    .Where(l => !l.Ativa)
-                    .Count() != OutrasLampadas.Count ||
-                    lista
-                    .Where(l => !l.Ativa)
-                    .Zip(OutrasLampadas, (nova, atual) =>
-                        nova.Id != atual.Id || nova.Estado != atual.Estado)
-                    .Any(mudanca => mudanca);
-
-                if (houveMudancaNasOutras)
-                {
-                    OutrasLampadas.Clear();
+                OutrasLampadas.Clear();
                     foreach (var lamp in lista.Where(l => !l.Ativa))
                         OutrasLampadas.Add(lamp);
-                }
+
+                //bool houveMudancaNasOutras = lista
+                //    .Where(l => !l.Ativa)
+                //    .Count() != OutrasLampadas.Count ||
+                //    lista
+                //    .Where(l => !l.Ativa)
+                //    .Zip(OutrasLampadas, (nova, atual) =>
+                //        nova.Id != atual.Id || nova.Estado != atual.Estado)
+                //    .Any(mudanca => mudanca);
+
+                //if (houveMudancaNasOutras)
+                //{
+                //    OutrasLampadas.Clear();
+                //    foreach (var lamp in lista.Where(l => !l.Ativa))
+                //        OutrasLampadas.Add(lamp);
+                //}
             }
             catch (Exception ex)
             {
